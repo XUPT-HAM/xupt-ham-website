@@ -1,40 +1,42 @@
 ---
 title: 西邮五九电波社
-description: Get started building your docs site with Starlight.
+description: 西安邮电大学业余无线电通信协会（西邮五九电波社）官方网站
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
   tagline: 西安邮电大学业余无线电通信协会
   image:
     file: ../../assets/xupt-icon.png
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: 社团简介
+      link: /about/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: 西邮官网
+      link: https://new.xupt.edu.cn/
       icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## 关于我们
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+西邮五九电波社（XUPT HAM Society）是西安邮电大学面向全校学生的业余无线电兴趣社团。我们以推广业余无线电、普及通信知识、锤炼动手实践能力为宗旨，为同学们搭建从电台操作、天线制作到应急通信、无线电测向的实践平台。
+
+<CardGrid>
+	<Card title="社团简介" icon="open-book">
+		了解我们的宗旨、成员与日常活动。<br />
+    <a class="club-btn" href="/about/">查看</a>
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
+	<Card title="西邮校史" icon="open-book">
+		从 1950 到今天，读懂这所信息科技学府。<br />
+    <a class="club-btn" href="/history/">查看</a>
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="联系我们" icon="email">
+		招新、活动地点与联系方式都在这里。<br />
+    <a class="club-btn" href="/contact/">查看</a>
 	</Card>
 </CardGrid>
+
+## 加入我们
+
+无论你是否接触过无线电，只要愿意动手、乐于探索，都欢迎加入。详情请见 [联系我们](/contact/) 页面。

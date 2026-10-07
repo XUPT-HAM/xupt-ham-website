@@ -2,5 +2,9 @@
 	"skipLink.label": "跳到正文",
 	"search.label": "搜索",
 	"sidebar.onThisPage": "本页目录",
-	"themeSelect.accessibleLabel": "切换主题"
+	"themeSelect.accessibleLabel": "切换主题",
+	"nav.about": "社团简介",
+	"nav.history": "西邮校史",
+	"nav.contact": "联系我们",
+	"nav.knowledge": "知识库"
 }

@@ -1,0 +1,30 @@
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<StarlightPage frontmatter={{ title: 'Contact' }} hasSidebar={false}>
+
+Whether you want to join us or are simply curious about radio, feel free to reach out.
+
+## Who can join
+
+All enrolled undergraduates and postgraduates are welcome — no experience needed, just a hands-on, curious mindset.
+
+## Get in touch
+
+<CardGrid>
+	<Card title="Email" icon="email">
+		[club@xupt-ham.example.com](mailto:club@xupt-ham.example.com)
+	</Card>
+	<Card title="QQ group" icon="open-book">
+		123456789 (note "radio" when joining)
+	</Card>
+	<Card title="WeChat" icon="star">
+		XUPT HAM Society
+	</Card>
+</CardGrid>
+
+## Where we meet
+
+Chang'an Campus · Radio Club room, Engineering Training Center (see recruitment notices for the exact room).
+
+</StarlightPage>

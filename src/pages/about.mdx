@@ -1,0 +1,33 @@
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<StarlightPage frontmatter={{ title: '社团简介' }} hasSidebar={false}>
+
+西邮五九电波社（XUPT HAM Society）是西安邮电大学面向全校学生的业余无线电兴趣社团，由热爱无线电、通信与电子技术的同学自发组织。我们以「推广业余无线电、普及通信知识、锤炼动手实践能力」为宗旨，为同学们提供从电台操作到天线制作、从应急通信到无线电测向的全方位实践平台。
+
+## 我们是谁
+
+社团成员来自通信、电子、计算机等多个专业，既有刚入门的新手，也有持有业余电台操作证书（A / B 类）的「老火腿」（OM）。我们定期组织通联、技术分享与户外架设活动，在电波中结识天南地北的爱好者。
+
+## 我们做什么
+
+<CardGrid>
+	<Card title="电台通联" icon="open-book">
+		使用短波 / UHF-VHF 电台与世界各地的业余无线电爱好者（HAM）通联，积累 DX 经验。
+	</Card>
+	<Card title="应急通信" icon="rocket">
+		演练在自然灾害等场景下利用无线电保障通信畅通，提升应急保障能力。
+	</Card>
+	<Card title="无线电测向" icon="pencil">
+		开展 ARDF（业余无线电测向）训练，在奔跑中搜寻隐蔽信号源，体能与智力兼具。
+	</Card>
+	<Card title="科普宣讲" icon="star">
+		面向校内同学科普电磁波、天线与通信原理，让更多人了解无线电的魅力。
+	</Card>
+</CardGrid>
+
+## 如何加入
+
+社团面向全体在校本科生与研究生招新，零基础也欢迎。关注招新推文，或直接通过 [联系我们](/contact/) 页面找到我们。
+
+</StarlightPage>

@@ -1,11 +1,28 @@
 ---
-title: Example Reference
-description: A reference page in my new Starlight docs site.
+title: 常用术语与参数
+description: 业余无线电常用术语、单位与公式速查表。
 ---
 
-Reference pages are ideal for outlining how things work in terse and clear terms.
-Less concerned with telling a story or addressing a specific use case, they should give a comprehensive outline of what you're documenting.
+本页是知识库的「参考」部分，列出业余无线电中最常见的术语与公式，方便随时查阅。
 
-## Further reading
+## 常用物理量
 
-- Read [about reference](https://diataxis.fr/reference/) in the Diátaxis framework
+| 量 | 符号 | 单位 |
+| --- | --- | --- |
+| 频率 | $f$ | Hz |
+| 波长 | $\lambda$ | m |
+| 功率 | $P$ | W |
+
+## 自由空间路径损耗（FSPL）
+
+信号在自由空间传播时的损耗随距离与频率增大：
+
+$$ \text{FSPL(dB)} = 20\log_{10}(d) + 20\log_{10}(f) + 32.45 $$
+
+其中 $d$ 为距离（单位 km），$f$ 为频率（单位 MHz）。
+
+## 天线增益与有效孔径
+
+$$ D = \frac{4\pi A_e}{\lambda^2} $$
+
+$A_e$ 为天线的有效孔径面积，$\lambda$ 为工作波长。孔径越大，增益越高。

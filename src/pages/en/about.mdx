@@ -1,0 +1,41 @@
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<StarlightPage frontmatter={{ title: 'About' }} hasSidebar={false}>
+
+XUPT HAM Society is a student-run amateur radio club at Xi'an University of Posts and
+Telecommunications, organized by students who love radio, communications, and electronics. Our
+mission is to promote amateur radio, spread communications knowledge, and build hands-on
+skills — offering everything from station operation to antenna building, emergency
+communications, and radio direction finding.
+
+## Who we are
+
+Our members come from communications, electronics, computer science, and more. We range from
+complete beginners to seasoned "OMs" holding amateur radio operator licenses (Class A / B). We
+host regular on-air sessions, tech talks, and field deployments to meet fellow enthusiasts
+around the world.
+
+## What we do
+
+<CardGrid>
+	<Card title="On-air contacts" icon="open-book">
+		Work shortwave / UHF-VHF stations with HAMs worldwide and build up DX experience.
+	</Card>
+	<Card title="Emergency comms" icon="rocket">
+		Practice keeping communications alive during disasters to sharpen emergency readiness.
+	</Card>
+	<Card title="Direction finding" icon="pencil">
+		Train in ARDF (amateur radio direction finding) — hunting hidden transmitters on the run.
+	</Card>
+	<Card title="Outreach" icon="star">
+		Share the magic of radio — waves, antennas, and protocols — with the campus community.
+	</Card>
+</CardGrid>
+
+## How to join
+
+We welcome all enrolled undergraduates and postgraduates, no experience required. Watch our
+recruitment posts, or find us via the [Contact](/en/contact/) page.
+
+</StarlightPage>

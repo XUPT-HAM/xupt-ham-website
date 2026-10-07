@@ -2,5 +2,9 @@
 	"skipLink.label": "Skip to content",
 	"search.label": "Search",
 	"sidebar.onThisPage": "On this page",
-	"themeSelect.accessibleLabel": "Change theme"
+	"themeSelect.accessibleLabel": "Change theme",
+	"nav.about": "About",
+	"nav.history": "History",
+	"nav.contact": "Contact",
+	"nav.knowledge": "Knowledge"
 }
