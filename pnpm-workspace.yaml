@@ -1,7 +1,10 @@
-allowBuilds:
-  esbuild: true
-  sharp: true
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
 minimumReleaseAgeExclude:
   - '@astrojs/internal-helpers@0.12.0'
   - '@astrojs/markdown-satteri@0.4.3'
   - astro@7.3.6
+allowBuilds:
+  esbuild: true
+  sharp: true

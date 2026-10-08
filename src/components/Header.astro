@@ -1,16 +1,19 @@
 ---
 import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
-import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
 // 根据当前语言决定链接前缀：默认语言（根路径）为空，英文为 /en
 const t = Astro.locals.t ?? ((key: string) => key);
 const base = Astro.currentLocale === 'en' ? '/en' : '';
 const links = [
+	{ href: `${base}/`, label: t('nav.home') },
+	{ href: `${base}/activities/`, label: t('nav.activities') },
+	{ href: `${base}/members/`, label: t('nav.members') },
 	{ href: `${base}/about/`, label: t('nav.about') },
 	{ href: `${base}/history/`, label: t('nav.history') },
 	{ href: `${base}/contact/`, label: t('nav.contact') },
-	{ href: `${base}/guides/example/`, label: t('nav.knowledge') },
+	{ href: `${base}/links/`, label: t('nav.links') },
+	{ href: `${base}/start/01-about-wiki/`, label: t('nav.knowledge') },
 ];
 ---
 
@@ -28,7 +31,6 @@ const links = [
 		}
 	</nav>
 	<div class="sl-hidden md:sl-flex print:hidden right-group">
-		<ThemeSelect />
 		<LanguageSelect />
 	</div>
 </div>

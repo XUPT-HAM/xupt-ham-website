@@ -1,0 +1,109 @@
+---
+import { Image } from 'astro:assets';
+import { LinkButton } from '@astrojs/starlight/components';
+
+const { data } = Astro.locals.starlightRoute.entry;
+const { title = data.title, tagline, image, actions = [] } = data.hero || {};
+
+const imageAttrs = {
+	loading: 'eager' as const,
+	decoding: 'async' as const,
+	width: 400,
+	height: 400,
+	alt: image?.alt || '',
+};
+
+let imageFile: ImageMetadata | undefined;
+let rawHtml: string | undefined;
+if (image) {
+	if ('file' in image) {
+		imageFile = image.file;
+	} else if ('html' in image) {
+		rawHtml = image.html;
+	}
+}
+---
+
+<div class="hero-card">
+	{
+		imageFile && (
+			<Image src={imageFile} {...imageAttrs} class="hero-logo" />
+		)
+	}
+	{rawHtml && <div class="hero-logo sl-flex" set:html={rawHtml} />}
+	<div class="hero-copy">
+		<h1 id="page-title" data-page-title set:html={title} />
+		{tagline && <p class="hero-tagline" set:html={tagline} />}
+	</div>
+	{
+		actions.length > 0 && (
+			<div class="hero-actions sl-flex">
+				{actions.map(
+					({ attrs: { class: className, ...attrs } = {}, icon, link: href, text, variant }) => (
+						<LinkButton {href} {variant} icon={icon?.name} class:list={[className]} {...attrs}>
+							{text}
+							{icon?.html && <Fragment set:html={icon.html} />}
+						</LinkButton>
+					)
+				)}
+			</div>
+		)
+	}
+</div>
+
+<style>
+	.hero-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: clamp(1.25rem, 3vw, 2rem);
+		text-align: center;
+		max-width: 60rem;
+		margin-inline: auto;
+		padding: clamp(2rem, 5vw, 4rem);
+		border-radius: 1.75rem;
+		background: linear-gradient(155deg, rgba(57, 53, 82, 0.88), rgba(31, 28, 46, 0.92));
+		border: 1px solid rgba(158, 140, 186, 0.28);
+		box-shadow:
+			0 24px 70px -28px rgba(0, 0, 0, 0.7),
+			inset 0 1px 0 rgba(255, 255, 255, 0.06);
+	}
+
+	.hero-logo {
+		width: clamp(7rem, 20vw, 11rem);
+		height: auto;
+		object-fit: contain;
+		filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+	}
+
+	.hero-copy {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.9rem;
+	}
+
+	.hero-copy h1 {
+		font-size: clamp(var(--sl-text-3xl), calc(0.5rem + 5vw), var(--sl-text-6xl));
+		line-height: var(--sl-line-height-headings);
+		font-weight: 700;
+		margin: 0;
+		background: linear-gradient(180deg, #f6f4fb, #c9b8e8);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+
+	.hero-tagline {
+		margin: 0;
+		max-width: 42ch;
+		font-size: clamp(var(--sl-text-base), calc(0.0625rem + 2vw), var(--sl-text-xl));
+		color: var(--sl-color-gray-2);
+	}
+
+	.hero-actions {
+		gap: 1rem 1.5rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+</style>

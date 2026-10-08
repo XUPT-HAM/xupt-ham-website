@@ -1,0 +1,66 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { LinkButton } from '@astrojs/starlight/components';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('activities');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+---
+
+<StarlightPage
+	frontmatter={{ title: post.data.title, description: post.data.description }}
+	headings={headings}
+	hasSidebar={false}
+>
+	<article class="activity-post">
+		<header class="post-header">
+			<time datetime={post.data.date.toISOString()}>{formattedDate}</time>
+		</header>
+
+		<Content />
+
+		<footer class="post-footer">
+			<LinkButton href="/activities/" icon="left-arrow" iconPlacement="start">返回活动列表</LinkButton>
+		</footer>
+	</article>
+</StarlightPage>
+
+<style>
+	.activity-post {
+		line-height: 1.7;
+	}
+
+	.post-header {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.75rem;
+		margin-bottom: 1.5rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--sl-color-gray-5);
+	}
+
+	.post-header time {
+		color: var(--sl-color-gray-3);
+		font-size: 0.9rem;
+	}
+
+	.post-footer {
+		margin-top: 2.5rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--sl-color-gray-5);
+	}
+</style>

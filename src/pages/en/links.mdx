@@ -1,0 +1,29 @@
+---
+# Note: StarlightPage does not read the file's frontmatter; the title is passed via the component prop.
+---
+
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+<StarlightPage frontmatter={{ title: 'Friend Links', description: 'Partner sites and amateur radio resources.' }} hasSidebar={false}>
+
+These are partner sites of XUPT HAM Society or commonly used amateur radio resources. Click a card to visit.
+
+## On Campus
+
+<CardGrid>
+	<LinkCard title="XUPT" description="The official website of Xi'an University of Posts & Telecommunications." href="https://www.xupt.edu.cn/" />
+	<LinkCard title="XUPT Library" description="Catalog search, e-resources and seat booking." href="https://lib.xupt.edu.cn/" />
+	<LinkCard title="XUPT Student Affairs" description="Student affairs, scholarships and club management." href="https://xsc.xupt.edu.cn/" />
+</CardGrid>
+
+## Off Campus
+
+<CardGrid>
+	<LinkCard title="CRAC" description="Chinese Radio Amateurs Club: licenses, callsigns and events." href="http://www.crac.cc/" />
+	<LinkCard title="HelloCQ Forum" description="An active Chinese amateur radio community." href="https://www.hellocq.net/" />
+	<LinkCard title="QRZ.com" description="The global callsign database and station profiles." href="https://www.qrz.com/" />
+	<LinkCard title="ARRL" description="The American Radio Relay League, a leading amateur radio resource." href="https://www.arrl.org/" />
+</CardGrid>
+
+</StarlightPage>

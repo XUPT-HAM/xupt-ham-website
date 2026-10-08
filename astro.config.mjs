@@ -36,12 +36,28 @@ export default defineConfig({
 			// 使用 autogenerate 让侧边栏按各语言目录自动生成，链接会随 locale 正确切换，
 			// 不会出现「英文版侧边栏指向中文页面」的问题。
 			sidebar: [
-				{ label: '指南', items: [{ autogenerate: { directory: 'guides' } }] },
-				{ label: '参考', items: [{ autogenerate: { directory: 'reference' } }] },
+				{ label: '开始', items: [{ autogenerate: { directory: 'start' } }] },
+				{ label: '法律法规', items: [{ autogenerate: { directory: 'legislation' } }] },
+				{ label: '通联部', items: [{ autogenerate: { directory: 'communication' } }] },
+				{ label: '技术部', items: [{ autogenerate: { directory: 'technical' } }] },
+				{
+					label: '卫星部',
+					items: [
+						{ label: '关于卫星部', link: '/satellite/01-about-satellite/' },
+						{ label: '追星方法', link: '/satellite/02-sat-chasing/' },
+						{
+							label: '慢扫描电视',
+							items: [{ autogenerate: { directory: 'satellite/03-sstv' } }],
+						},
+						{ label: '测试', link: '/satellite/04-md-test/' },
+					],
+				},
 			],
 			// 覆盖默认 Header 组件，加入随语言切换的顶部导航（见 src/components/Header.astro）
 			components: {
 				Header: './src/components/Header.astro',
+				Hero: './src/components/Hero.astro',
+				ThemeProvider: './src/components/ThemeProvider.astro',
 			},
 		}),
 	],

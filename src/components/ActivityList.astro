@@ -1,0 +1,164 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+	posts: CollectionEntry<'activities'>[];
+	currentPage: number;
+	lastPage: number;
+	prevUrl?: string;
+	nextUrl?: string;
+}
+const { posts, currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
+---
+
+<p class="lead">这里汇集五九电波社近期的户外架设、通联台网、技术分享与比赛等活动。点击任意卡片查看详情。</p>
+
+{
+	posts.length === 0 ? (
+		<p>暂无活动，敬请期待。</p>
+	) : (
+		<ul class="post-list">
+			{posts.map((post) => (
+				<li>
+					<a class="post-card" href={`/activities/${post.id}/`}>
+						<div class="body">
+							<time datetime={post.data.date.toISOString()}>
+								{post.data.date.toLocaleDateString('zh-CN', {
+									year: 'numeric',
+									month: 'long',
+									day: 'numeric',
+								})}
+							</time>
+							<h2>{post.data.title}</h2>
+							{post.data.description && <p class="excerpt">{post.data.description}</p>}
+						</div>
+						{
+							post.data.cover && (
+								<Image
+									class="cover"
+									src={post.data.cover}
+									alt={post.data.coverAlt ?? post.data.title}
+								/>
+							)
+						}
+					</a>
+				</li>
+			))}
+		</ul>
+	)
+}
+
+<nav class="pagination" aria-label="分页">
+	{prevUrl ? (
+		<a href={prevUrl} rel="prev">← 上一页</a>
+	) : (
+		<span class="disabled">← 上一页</span>
+	)}
+	<span class="page-indicator">第 {currentPage} / {lastPage} 页</span>
+	{nextUrl ? (
+		<a href={nextUrl} rel="next">下一页 →</a>
+	) : (
+		<span class="disabled">下一页 →</span>
+	)}
+</nav>
+
+<style>
+	.lead {
+		font-size: 1.1rem;
+		color: var(--sl-color-gray-2);
+		margin-bottom: 1.5rem;
+	}
+
+	.post-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 1rem;
+	}
+
+	.post-card {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		padding: 1.1rem 1.25rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.6rem;
+		text-decoration: none;
+		color: inherit;
+		transition: border-color 0.15s, transform 0.15s, background 0.15s;
+	}
+
+	.post-card:hover {
+		border-color: var(--sl-color-accent);
+		background: var(--sl-color-gray-6);
+		transform: translateY(-2px);
+	}
+
+	.post-card .body {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.post-card .cover {
+		flex: 0 0 auto;
+		width: 150px;
+		height: 100px;
+		object-fit: cover;
+		border-radius: 0.45rem;
+	}
+
+	.post-card time {
+		display: block;
+		font-size: 0.85rem;
+		color: var(--sl-color-gray-3);
+		margin-bottom: 0.35rem;
+	}
+
+	.post-card h2 {
+		margin: 0 0 0.4rem;
+		font-size: 1.2rem;
+		color: var(--sl-color-white);
+	}
+
+	.post-card .excerpt {
+		margin: 0 0 0.6rem;
+		color: var(--sl-color-gray-2);
+	}
+
+	.pagination {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.pagination a {
+		color: var(--sl-color-accent-high);
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.pagination .disabled {
+		color: var(--sl-color-gray-5);
+	}
+
+	.page-indicator {
+		color: var(--sl-color-gray-2);
+	}
+
+	/* 移动端：封面图转为卡片顶部整宽，避免挤压文字 */
+	@media (max-width: 30rem) {
+		.post-card {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.post-card .cover {
+			width: 100%;
+			height: 160px;
+		}
+	}
+</style>

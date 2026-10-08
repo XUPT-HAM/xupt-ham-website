@@ -4,7 +4,11 @@
 	"sidebar.onThisPage": "On this page",
 	"themeSelect.accessibleLabel": "Change theme",
 	"nav.about": "About",
-	"nav.history": "History",
+	"nav.history": "Development History",
 	"nav.contact": "Contact",
-	"nav.knowledge": "Knowledge"
+	"nav.links": "Friend Links",
+	"nav.knowledge": "Knowledge",
+	"nav.home": "Home",
+	"nav.activities": "Recent Activities",
+	"nav.members": "Members"
 }

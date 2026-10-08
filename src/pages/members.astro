@@ -1,0 +1,399 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import {
+	memberSections,
+	memberFields,
+	memberPrimary,
+	memberInitial,
+} from '../data/members';
+
+const fieldValue = (m: Record<string, string | undefined>, key: string): string =>
+	(m[key] ?? '').toString().trim();
+---
+
+<StarlightPage
+	frontmatter={{
+		title: '社员风采',
+		description: '五九电波社成员一览：现任管理层、各年级成员与校外友台。',
+		tableOfContents: false,
+	}}
+	hasSidebar={false}
+>
+	<p class="lead">这里汇集五九电波社的成员。点击（或键盘聚焦后按回车）任意名片，可在弹窗中查看该成员的详细信息。</p>
+
+	<!-- not-content：让内部元素退出 Starlight 的“内容间距”规则，避免网格卡片被加 margin-top -->
+	<div class="members-page not-content">
+		{
+			memberSections.map((section) => (
+				<section class="member-section">
+					<h2>{section.title}</h2>
+					<div class="member-grid">
+						{section.members.map((m) => {
+							const primary = memberPrimary(m);
+							const rows = memberFields
+								.map((f) => ({ ...f, value: fieldValue(m, f.key) }))
+								.filter((f) => f.value);
+							const avatarEl = m.avatar ? (
+								<img
+									class="avatar"
+									src={m.avatar}
+									alt={`${primary} 的头像`}
+									width="44"
+									height="44"
+								/>
+							) : (
+								<span class="avatar avatar-fallback" aria-hidden="true">
+									{memberInitial(m)}
+								</span>
+							);
+							return (
+								<article
+									class="member-card"
+									tabindex="0"
+									role="button"
+									aria-label={`查看 ${primary} 的详情`}
+								>
+									<div class="member-face">
+										{avatarEl}
+										<span class="primary">{primary}</span>
+									</div>
+									{/* 弹窗内容源：默认隐藏，不占布局，保证网格整齐 */}
+									<div class="member-modal-source">
+										<div class="member-modal-layout">
+											<div class="member-modal-avatar">{avatarEl}</div>
+											<div class="member-modal-info">
+												<div class="member-modal-name">{primary}</div>
+												<dl class="member-detail">
+													{rows.map((f) => (
+														<div class="field">
+															<dt>{f.label}</dt>
+															<dd>
+																{f.type === 'link' ? (
+																	<a href={f.value} target="_blank" rel="noopener noreferrer">
+																		{f.value}
+																	</a>
+																) : f.type === 'mail' ? (
+																	<a href={`mailto:${f.value}`}>{f.value}</a>
+																) : (
+																	f.value
+																)}
+															</dd>
+														</div>
+													))}
+												</dl>
+											</div>
+										</div>
+									</div>
+								</article>
+							);
+						})}
+					</div>
+				</section>
+			))
+		}
+
+		<dialog class="member-modal" aria-label="社员详情">
+			<button class="member-modal-close" type="button" aria-label="关闭">×</button>
+			<div class="member-modal-body"></div>
+		</dialog>
+	</div>
+
+	<script>
+		const dialog = document.querySelector('.member-modal');
+		if (dialog) {
+			const body = dialog.querySelector('.member-modal-body');
+			const closeBtn = dialog.querySelector('.member-modal-close');
+
+			const openCard = (card: Element) => {
+				const src = card.querySelector('.member-modal-source');
+				if (src) body.innerHTML = src.innerHTML;
+				dialog.showModal();
+			};
+
+			document.querySelectorAll('.member-card').forEach((card) => {
+				card.addEventListener('click', () => openCard(card));
+				card.addEventListener('keydown', (e: KeyboardEvent) => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
+						openCard(card);
+					}
+				});
+			});
+
+			closeBtn?.addEventListener('click', () => dialog.close());
+			// 点击半透明背景（dialog 自身）关闭
+			dialog.addEventListener('click', (e: MouseEvent) => {
+				if (e.target === dialog) dialog.close();
+			});
+		}
+	</script>
+</StarlightPage>
+
+<style>
+	.lead {
+		font-size: 1.1rem;
+		color: var(--sl-color-gray-2);
+		margin-bottom: 1.5rem;
+	}
+
+	.member-section {
+		margin-bottom: 2.5rem;
+	}
+
+	.member-section h2 {
+		font-size: 1.5rem;
+		margin: 0 0 1rem;
+		padding-bottom: 0.4rem;
+		border-bottom: 1px solid var(--sl-color-gray-5);
+	}
+
+	.member-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 1rem;
+		align-items: stretch;
+	}
+
+	/* 紧凑卡面：固定高度，整行整齐；弹窗内容隐藏不占布局 */
+	.member-card {
+		position: relative;
+		display: flex;
+		align-items: center;
+		height: 64px;
+		padding: 0 1rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.6rem;
+		background: var(--sl-color-gray-6);
+		cursor: pointer;
+		transition: border-color 0.18s ease, box-shadow 0.18s ease;
+	}
+
+	.member-card:hover,
+	.member-card:focus-visible {
+		border-color: var(--sl-color-accent);
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+		outline: none;
+	}
+
+	.member-face {
+		display: flex;
+		align-items: center;
+		gap: 0.7rem;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.avatar {
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		object-fit: cover;
+		flex: 0 0 auto;
+		background: var(--sl-color-gray-5);
+	}
+
+	.avatar-fallback {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 700;
+		color: var(--sl-color-white);
+		font-size: 1.1rem;
+	}
+
+	.primary {
+		font-weight: 700;
+		font-size: 1.05rem;
+		color: var(--sl-color-white);
+		min-width: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	/* 弹窗内容源：默认不渲染，点击时克隆进 dialog */
+	.member-modal-source {
+		display: none;
+	}
+
+	/* ===== 居中模态窗（横版：左头像 + 右信息） ===== */
+	.member-modal {
+		position: fixed;
+		inset: 0;
+		margin: auto;
+		border: none;
+		border-radius: 1rem;
+		padding: 0;
+		width: min(36rem, calc(100vw - 2rem));
+		max-height: calc(100vh - 4rem);
+		/* WinUI / Mica 风格：半透明毛玻璃面板 */
+		background-color: rgba(32, 35, 42, 0.55);
+		background-image: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.08) 0%,
+			rgba(255, 255, 255, 0) 38%
+		);
+		-webkit-backdrop-filter: blur(30px) saturate(180%);
+		backdrop-filter: blur(30px) saturate(180%);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		box-shadow:
+			0 24px 70px rgba(0, 0, 0, 0.55),
+			inset 0 1px 0 rgba(255, 255, 255, 0.1);
+		/* 玻璃面板固定为深色，文字用字面亮色，
+		   避免 Starlight 语义色在亮色主题下翻转成深色导致看不清 */
+		--mm-hi: #f6f4fb;
+		--mm-body: #dbd8e8;
+		color: var(--mm-body);
+	}
+
+	.member-modal::backdrop {
+		background: rgba(8, 10, 14, 0.4);
+		-webkit-backdrop-filter: blur(8px);
+		backdrop-filter: blur(8px);
+	}
+
+	.member-modal-body {
+		padding: 1.75rem;
+		max-height: calc(100vh - 4rem);
+		overflow: auto;
+	}
+
+	.member-modal-close {
+		position: absolute;
+		top: 0.6rem;
+		right: 0.6rem;
+		width: 2rem;
+		height: 2rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		border-radius: 50%;
+		background: transparent;
+		color: #c9c5da;
+		font-size: 1.5rem;
+		line-height: 1;
+		cursor: pointer;
+		z-index: 1;
+	}
+
+	.member-modal-close:hover {
+		background: rgba(255, 255, 255, 0.14);
+		color: var(--mm-hi);
+	}
+
+	/* 弹出动画 */
+	@keyframes member-modal-in {
+		from {
+			opacity: 0;
+			transform: translateY(28px) scale(0.94);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@keyframes member-backdrop-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	.member-modal[open] {
+		animation: member-modal-in 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.member-modal[open]::backdrop {
+		animation: member-backdrop-in 0.32s ease;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.member-modal[open],
+		.member-modal[open]::backdrop {
+			animation: none;
+		}
+	}
+
+	/* 横版布局：头像在左、信息在右 */
+	.member-modal-layout {
+		display: flex;
+		gap: 1.5rem;
+		align-items: flex-start;
+	}
+
+	.member-modal-avatar .avatar {
+		width: 96px;
+		height: 96px;
+		border: 2px solid rgba(255, 255, 255, 0.22);
+	}
+
+	/* 无头像时的首字母占位：深色玻璃上保证可读 */
+	.member-modal-avatar .avatar-fallback {
+		font-size: 2.2rem;
+		background: rgba(255, 255, 255, 0.16);
+		color: var(--mm-hi);
+	}
+
+	.member-modal-info {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.member-modal-name {
+		font-size: 1.45rem;
+		font-weight: 700;
+		color: var(--mm-hi);
+		margin-bottom: 0.75rem;
+	}
+
+	.member-detail {
+		margin: 0;
+		display: grid;
+		gap: 0.45rem;
+	}
+
+	.field {
+		display: grid;
+		grid-template-columns: 6.5rem 1fr;
+		gap: 0.5rem;
+		font-size: 0.95rem;
+	}
+
+	.field dt {
+		color: var(--mm-hi);
+		font-weight: 600;
+	}
+
+	.field dd {
+		margin: 0;
+		color: var(--mm-body);
+		word-break: break-word;
+	}
+
+	.field a {
+		color: var(--sl-color-accent-high);
+		text-decoration: none;
+	}
+
+	.field a:hover {
+		text-decoration: underline;
+	}
+
+	/* 窄屏下头像适当缩小，保证横向布局仍可用 */
+	@media (max-width: 30rem) {
+		.member-modal-layout {
+			gap: 1rem;
+		}
+		.member-modal-avatar .avatar {
+			width: 72px;
+			height: 72px;
+		}
+		.member-modal-name {
+			font-size: 1.25rem;
+		}
+	}
+</style>

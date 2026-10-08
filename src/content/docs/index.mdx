@@ -10,33 +10,29 @@ hero:
     - text: 社团简介
       link: /about/
       icon: right-arrow
+    - text: 知识库
+      link: /start/01-about-wiki/
+      icon: open-book
     - text: 西邮官网
       link: https://new.xupt.edu.cn/
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 ## 关于我们
 
-西邮五九电波社（XUPT HAM Society）是西安邮电大学面向全校学生的业余无线电兴趣社团。我们以推广业余无线电、普及通信知识、锤炼动手实践能力为宗旨，为同学们搭建从电台操作、天线制作到应急通信、无线电测向的实践平台。
+西邮五九电波社（Five-Nine Radio Wave Club）是西安邮电大学面向全校学生的业余无线电兴趣社团。我们以「推广业余无线电、普及通信知识、锤炼动手实践能力」为宗旨，为同学们搭建从电台通联、电子与通信技术、卫星遥感与天文学的实践平台。
 
 <CardGrid>
-	<Card title="社团简介" icon="open-book">
-		了解我们的宗旨、成员与日常活动。<br />
-    <a class="club-btn" href="/about/">查看</a>
-	</Card>
-	<Card title="西邮校史" icon="open-book">
-		从 1950 到今天，读懂这所信息科技学府。<br />
-    <a class="club-btn" href="/history/">查看</a>
-	</Card>
-	<Card title="联系我们" icon="email">
-		招新、活动地点与联系方式都在这里。<br />
-    <a class="club-btn" href="/contact/">查看</a>
-	</Card>
+	<LinkCard title="社团简介" description="了解我们的宗旨、成员与日常活动。" href="/about/" />
+	<LinkCard title="发展历史" description="从 1950 到今天，读懂这所信息科技学府。" href="/history/" />
+	<LinkCard title="知识库" description="业余无线电操作、法规、技术与活动资料汇总。" href="/start/01-about-wiki/" />
+	<LinkCard title="联系我们" description="招新、活动地点与联系方式都在这里。" href="/contact/" />
+	<LinkCard title="友情链接" description="校内外伙伴与业余无线电相关站点导航。" href="/links/" />
 </CardGrid>
 
 ## 加入我们
 
-无论你是否接触过无线电，只要愿意动手、乐于探索，都欢迎加入。详情请见 [联系我们](/contact/) 页面。
+无论你是否接触过无线电，只要愿意动手、乐于探索，都欢迎加入，入社无任何门槛。详情请见 [联系我们](/contact/) 页面。

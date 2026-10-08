@@ -1,0 +1,25 @@
+---
+# 注意：StarlightPage 不读取文件顶部的 frontmatter，标题要通过组件 prop 传入
+---
+
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+<StarlightPage frontmatter={{ title: '友情链接', description: '校内外伙伴站点与业余无线电相关资源导航。' }} hasSidebar={false}>
+
+下列站点为西邮五九电波社的合作伙伴，点击卡片即可跳转。
+
+## 校内
+
+<CardGrid>
+	<LinkCard title="CO导航" description="西邮导航" href="https:/cooo.site/" />
+	<LinkCard title="智邮普创工作室" description="服务数字校园，探索安全边界" href="http://zypc.xupt.edu.cn/" />
+</CardGrid>
+
+## 校外
+
+<CardGrid>
+	<LinkCard title="HAM Wiki（国内访问较慢）" description="致力于成为一个持续更新的面向业余无线电入门级爱好者的知识型网站" href="https://hamwiki.vercel.app/" />
+</CardGrid>
+
+</StarlightPage>

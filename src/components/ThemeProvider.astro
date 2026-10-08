@@ -1,0 +1,18 @@
+---
+// 覆盖 Starlight 默认 ThemeProvider：全站锁定为暗色主题，不跟随系统偏好、
+// 也不读取历史 `starlight-theme` 存储值。导航栏已移除亮/暗切换下拉框，
+// 因此这里只需无条件把 <html> 设为 dark，并暴露一个无操作的 updatePickers
+// 以免其它组件引用 window.StarlightThemeProvider 时报错。
+---
+
+<script is:inline>
+	window.StarlightThemeProvider = (() => {
+		document.documentElement.dataset.theme = 'dark';
+		try {
+			localStorage.setItem('starlight-theme', 'dark');
+		} catch (e) {}
+		return {
+			updatePickers() {},
+		};
+	})();
+</script>

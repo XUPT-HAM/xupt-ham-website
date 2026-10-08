@@ -1,0 +1,24 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ActivityList from '../../components/ActivityList.astro';
+import { getCollection } from 'astro:content';
+
+const pageSize = 5;
+const all = (await getCollection('activities')).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const totalPages = Math.max(1, Math.ceil(all.length / pageSize));
+const items = all.slice(0, pageSize);
+---
+
+<StarlightPage
+	frontmatter={{ title: '近期活动', description: '五九电波社近期活动与通联日志', tableOfContents: false }}
+	hasSidebar={false}
+>
+	<ActivityList
+		posts={items}
+		currentPage={1}
+		lastPage={totalPages}
+		nextUrl={totalPages > 1 ? '/activities/page/2' : undefined}
+	/>
+</StarlightPage>

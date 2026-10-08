@@ -4,7 +4,11 @@
 	"sidebar.onThisPage": "本页目录",
 	"themeSelect.accessibleLabel": "切换主题",
 	"nav.about": "社团简介",
-	"nav.history": "西邮校史",
+	"nav.history": "发展历史",
 	"nav.contact": "联系我们",
-	"nav.knowledge": "知识库"
+	"nav.links": "友情链接",
+	"nav.knowledge": "知识库",
+	"nav.home": "首页",
+	"nav.activities": "近期活动",
+	"nav.members": "社员风采"
 }
