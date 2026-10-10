@@ -5,7 +5,7 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-<StarlightPage frontmatter={{ title: '友情链接', description: '校内外伙伴站点与业余无线电相关资源导航。' }} hasSidebar={false}>
+<StarlightPage frontmatter={{ title: '友情链接', description: '校内外伙伴站点与业余无线电相关资源导航。', tableOfContents: false }} hasSidebar={false}>
 
 下列站点为西邮五九电波社的合作伙伴，点击卡片即可跳转。
 
@@ -14,6 +14,7 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 <CardGrid>
 	<LinkCard title="CO导航" description="西邮导航" href="https:/cooo.site/" />
 	<LinkCard title="智邮普创工作室" description="服务数字校园，探索安全边界" href="http://zypc.xupt.edu.cn/" />
+	<LinkCard title="西邮 Wiki" description="西安邮电大学非官方校园生活指南" href="https://wiki.cooo.site/" />
 </CardGrid>
 
 ## 校外
