@@ -18,7 +18,7 @@ const links = [
 ---
 
 <div class="header">
-	<div class="title-wrapper sl-flex">
+	<div class="title-wrapper">
 		<SiteTitle />
 	</div>
 	<nav class="sl-flex site-nav" aria-label="Main">
@@ -30,7 +30,7 @@ const links = [
 			))
 		}
 	</nav>
-	<div class="sl-hidden md:sl-flex print:hidden right-group">
+	<div class="right-group">
 		<LanguageSelect />
 	</div>
 </div>
@@ -42,21 +42,63 @@ const links = [
 			gap: var(--sl-nav-gap);
 			justify-content: space-between;
 			align-items: center;
-			height: 100%;
+			height: 100%; /* 外层 <header> 高度固定为 --sl-nav-height，靠它把整行垂直居中 */
+			flex-wrap: nowrap; /* 单行契约：Header 必须始终与 --sl-nav-height 等高，禁止换行 */
 		}
 
 		.title-wrapper {
+			/* 原为工具类 sl-flex（属 starlight.utils 层），但该层在级联中晚于 core 层，
+			   会压过下面媒体查询里的 display:none。改为自持 display，让移动端隐藏真正生效。 */
+			display: flex;
 			overflow: clip;
 			padding: 0.25rem;
 			margin: -0.25rem;
 			min-width: 0;
+			flex-shrink: 0;
 		}
 
 		.site-nav {
 			flex: 1 1 auto;
+			min-width: 0; /* 允许收缩到内容宽度以下：放不下时内部横向滚动，而不是撑破单行 */
 			gap: 1.25rem;
 			align-items: center;
-			justify-content: center;
+			overflow-x: auto;
+			overflow-y: hidden;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: none; /* Firefox */
+			/* 渐隐宽度 = 两侧内边距：静止时首/末项完全可见，滚动时提示还能滑 */
+			padding-inline: 0.75rem;
+			/* Tab 聚焦滚入时至少留 1rem，焦点环不会被渐隐区淡化 */
+			scroll-padding-inline: 1rem;
+			mask-image: linear-gradient(
+				to right,
+				transparent 0,
+				#000 0.75rem,
+				#000 calc(100% - 0.75rem),
+				transparent 100%
+			);
+			-webkit-mask-image: linear-gradient(
+				to right,
+				transparent 0,
+				#000 0.75rem,
+				#000 calc(100% - 0.75rem),
+				transparent 100%
+			);
+		}
+
+		/* 放得下时 auto 外边距均分剩余空间 → 视觉居中；
+		   放不下时归零 → 从左侧开始、首项完全可达。
+		   不要用 justify-content: center：横向溢出时左侧会被裁进无法滚动到的区域 */
+		.site-nav a:first-child {
+			margin-inline-start: auto;
+		}
+
+		.site-nav a:last-child {
+			margin-inline-end: auto;
+		}
+
+		.site-nav::-webkit-scrollbar {
+			display: none; /* Chrome, Safari, Edge */
 		}
 
 		.site-nav a {
@@ -73,11 +115,31 @@ const links = [
 		.right-group {
 			gap: 1rem;
 			align-items: center;
+			display: flex;
+			flex-shrink: 0;
 		}
 
 		@media (max-width: 50rem) {
-			.site-nav {
+			/* 375px 空间预算（内层内容盒 = 视口 − 2×--sl-nav-pad-x − 4rem 汉堡预留[仅侧栏页]）：
+			   标题 ≈108px + 语言选择 ≈112px + 2×gap 32px 会把导航压到 43px/91px。
+			   移动端隐藏标题、把宽度让给导航（「首页」条目仍承担品牌入口）；
+			   语言选择必须保留 —— 首页/关于/社员等非侧栏页面没有汉堡抽屉，抽屉里也没有它。 */
+			.title-wrapper {
 				display: none;
+			}
+
+			.site-nav {
+				gap: 1rem;
+			}
+
+			.site-nav a {
+				display: inline-flex;
+				align-items: center;
+				min-height: 2.5rem; /* 触控目标 ≥40px */
+				font-size: var(--sl-text-sm);
+				padding: 0.2rem 0.4rem;
+				border-radius: 0.25rem;
+				flex-shrink: 0;
 			}
 		}
 	}
