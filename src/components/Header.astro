@@ -30,7 +30,7 @@ const links = [
 			))
 		}
 	</nav>
-	<div class="sl-hidden md:sl-flex print:hidden right-group">
+	<div class="right-group">
 		<LanguageSelect />
 	</div>
 </div>
@@ -43,6 +43,7 @@ const links = [
 			justify-content: space-between;
 			align-items: center;
 			height: 100%;
+			flex-wrap: wrap;
 		}
 
 		.title-wrapper {
@@ -50,6 +51,7 @@ const links = [
 			padding: 0.25rem;
 			margin: -0.25rem;
 			min-width: 0;
+			flex-shrink: 0;
 		}
 
 		.site-nav {
@@ -73,11 +75,37 @@ const links = [
 		.right-group {
 			gap: 1rem;
 			align-items: center;
+			display: flex;
+			flex-shrink: 0;
 		}
 
 		@media (max-width: 50rem) {
+			.header {
+				padding: 0.5rem 0;
+				row-gap: 0.5rem;
+			}
+
 			.site-nav {
-				display: none;
+				order: 3;
+				width: 100%;
+				justify-content: flex-start;
+				overflow-x: auto;
+				overflow-y: hidden;
+				-webkit-overflow-scrolling: touch;
+				scrollbar-width: none; /* Firefox */
+				padding: 0.25rem 0;
+				gap: 1rem;
+			}
+
+			.site-nav::-webkit-scrollbar {
+				display: none; /* Chrome, Safari, Edge */
+			}
+
+			.site-nav a {
+				font-size: var(--sl-text-sm);
+				padding: 0.2rem 0.4rem;
+				border-radius: 0.25rem;
+				flex-shrink: 0;
 			}
 		}
 	}
