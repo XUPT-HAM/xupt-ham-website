@@ -37,7 +37,16 @@ export default defineConfig({
 			// 不会出现「英文版侧边栏指向中文页面」的问题。
 			sidebar: [
 				{ label: '开始', items: [{ autogenerate: { directory: 'start' } }] },
-				{ label: '法律法规', items: [{ autogenerate: { directory: 'legislation' } }] },
+				{
+				label: '操作证考试知识点',
+				items: [
+					{ label: '无线电管理法规', items: [{ autogenerate: { directory: 'exam/01-radio-regulation' } }] },
+					{ label: '操作基础', items: [{ autogenerate: { directory: 'exam/02-operation' } }] },
+					{ label: '收发信机与天线', items: [{ autogenerate: { directory: 'exam/03-transceiver-antenna' } }] },
+					{ label: '电学基础', items: [{ autogenerate: { directory: 'exam/04-electronics' } }] },
+					{ label: '发射设备与电磁环境', items: [{ autogenerate: { directory: 'exam/05-transmitter-emc' } }] },
+				],
+			},
 				{ label: '通联部', items: [{ autogenerate: { directory: 'communication' } }] },
 				{ label: '技术部', items: [{ autogenerate: { directory: 'technical' } }] },
 				{

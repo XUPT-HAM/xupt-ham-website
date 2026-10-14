@@ -1,0 +1,99 @@
+---
+title: 区域划分频段规划与通联拼写
+description: 区域划分频段规划与通联拼写
+---
+
+# 业余无线电的区域划分、频段规划与通联拼写
+
+## 一、ITU 区域划分
+
+为在世界范围内协调频率划分，国际电信联盟（ **ITU** ）在 **《无线电规则》** 中把全球划分为 **3 个无线电管理区域** ：
+
+| 分区 | 包含地区 |
+| --- | --- |
+| 第 1 区 | 欧洲、俄罗斯亚洲部分、蒙古及部分西北亚国家 |
+| 第 2 区 | 南北美洲 |
+| 第 3 区 | 亚洲（除俄罗斯、蒙古和部分西北亚洲国家）和大洋洲 |
+
+**中国位于第 3 区** 。这一划分方法由 **ITU** 在其 **《无线电规则》** 中制定公布，并非由美国 ARRL、《CQ》杂志或 IARU 等机构规定。
+
+## 二、频段规划、载波边界计算与卫星业务段
+
+同一业余波段在 ITU 三个管理分区的频率边界会略有差异。以 **40 米波段** 为例，第 3 区的范围是 $7.000\,\mathrm{MHz}$ ~ $7.200\,\mathrm{MHz}$ （第 2 区则为 $7.000\,\mathrm{MHz}$ ~ $7.300\,\mathrm{MHz}$ ）。
+
+在 IARU 第 3 区的波段规划中，2 米波段的话音联络通常位于 $144.035\,\mathrm{MHz}$ ~ $145.800\,\mathrm{MHz}$ ，70 厘米波段话音常位于 $438\,\mathrm{MHz}$ ~ $440\,\mathrm{MHz}$ ，这些是多模式共用的细分频段。实际设台时，必须保证 **整个发射信号（含频率容限）落在规划频段之内** ，因此主载波的设置范围需要扣除信号带宽与频率容限。
+
+计算方法：设规划频段为 $[f_L, f_U]$，发射带宽 $B$，频率容限 $\Delta f$。
+
+- 对于 **FM（调频）** ，信号对称分布在载波两侧，各占 $\dfrac{B}{2}$，故主载波需满足 $f_L + \dfrac{B}{2} + \Delta f \leqslant f_c \leqslant f_U - \dfrac{B}{2} - \Delta f$。例如 2 米 FM（ $B<20\,\mathrm{kHz}$ 、 $\Delta f \leqslant 2\,\mathrm{kHz}$ ）：下限 $144.035 + 10 + 2 = 144.047\,\mathrm{MHz}$ ，上限 $145.800 - 10 - 2 = 145.788\,\mathrm{MHz}$ 。
+- 对于 **USB（上边带）** ，信号从载波向上延伸 $B$ ，载波即信号下沿，故 $f_L + \Delta f \leqslant f_c \leqslant f_U - B - \Delta f$ 。例如 2 米 USB（ $B<3\,\mathrm{kHz}$ ）：下限 $144.035 + 2 = 144.037\,\mathrm{MHz}$ ，上限 $145.800 - 3 - 2 = 145.795\,\mathrm{MHz}$ ；70 厘米 USB（ $438\sim440\,\mathrm{MHz}$ ）：下限 $438.002\,\mathrm{MHz}$ ，上限 $439.995\,\mathrm{MHz}$ 。
+
+各波段中专门留给 **卫星业余业务** 的频段，话音及其他常规通信不应占用：10 米波段为 $29.3\,\mathrm{MHz}$ ~ $29.51\,\mathrm{MHz}$，2 米波段为 $145.8\,\mathrm{MHz}$ ~ $146\,\mathrm{MHz}$，70 厘米波段为 $435\,\mathrm{MHz}$ ~ $438\,\mathrm{MHz}$。
+
+下面演示"主载波范围"的边界计算。
+
+> 例题：2 米波段话音通常位于 $144.035\,\mathrm{MHz}$ ~ $145.800\,\mathrm{MHz}$ （IARU 第 3 区多模式共用细分频段）。一部电台以 **FM** 方式在该频段通联，发射带宽小于 $20\,\mathrm{kHz}$ 、频率容限优于 $\pm2\,\mathrm{kHz}$ ，则该台的主载波设置范围可以是？
+>
+> - FM 信号对称分布在载波两侧，每侧占带宽一半 $\dfrac{B}{2}=10\,\mathrm{kHz}$ ，再加频率容限 $\Delta f=2\,\mathrm{kHz}$ 。
+> - 下限： $144.035 + 10 + 2 = 144.047\,\mathrm{MHz}$ 。
+> - 上限： $145.800 - 10 - 2 = 145.788\,\mathrm{MHz}$ 。
+>
+> 结论：主载波范围应为 **$144.047\,\mathrm{MHz}$ ~ $145.788\,\mathrm{MHz}$** 。
+
+> 例题：同在 2 米频段，但以 **USB** 方式通联，发射带宽小于 $3\,\mathrm{kHz}$ 、频率容限 $\pm2\,\mathrm{kHz}$ ，主载波设置范围？
+>
+> - USB 信号从载波向上延伸带宽 $B=3\,\mathrm{kHz}$，载波即信号下沿；另一侧只需留频率容限。
+> - 下限： $144.035 + \Delta f = 144.035 + 2 = 144.037\,\mathrm{MHz}$ 。
+> - 上限： $145.800 - B - \Delta f = 145.800 - 3 - 2 = 145.795\,\mathrm{MHz}$ 。
+>
+> 结论： **$144.037\,\mathrm{MHz}$ ~ $145.795\,\mathrm{MHz}$** 。
+
+> 例题：70 厘米波段话音常位于 $438\,\mathrm{MHz}$ ~ $440\,\mathrm{MHz}$ 。以 **FM** 通联，发射带宽小于 $20\,\mathrm{kHz}$ 、频率容限 $\pm2\,\mathrm{kHz}$ ，主载波设置范围？
+>
+> - 下限： $438 + \dfrac{B}{2} + \Delta f = 438 + 10 + 2 = 438.012\,\mathrm{MHz}$ 。
+> - 上限： $440 - \dfrac{B}{2} - \Delta f = 440 - 10 - 2 = 439.988\,\mathrm{MHz}$ 。
+>
+> 结论：**$438.012\,\mathrm{MHz}$ ~ $439.988\,\mathrm{MHz}$** 。
+
+> 例题：70 厘米波段 $438\,\mathrm{MHz}$ ~ $440\,\mathrm{MHz}$ ，以 **USB** 通联，发射带宽小于 $3\,\mathrm{kHz}$ 、频率容限 $\pm2\,\mathrm{kHz}$ ，主载波设置范围？
+>
+> - 下限： $438 + \Delta f = 438 + 2 = 438.002\,\mathrm{MHz}$ 。
+> - 上限： $440 - B - \Delta f = 440 - 3 - 2 = 439.995\,\mathrm{MHz}$ 。
+>
+> 结论：**$438.002\,\mathrm{MHz}$ ~ $439.995\,\mathrm{MHz}$** 。
+
+## 三、CQ 分区与 ITU 分区
+
+业余无线电中用于计算通信成绩、申请奖状的两种地理分区体系，容易混淆：
+
+- **CQ 分区** ：由美国 **《CQ》** 杂志在 **《WAZ 奖状规则》** 中制定，共 1~40 区，属于爱好者社群的奖状体系。位于我国境内的 CQ 分区为 **23、24、27** 。
+- **ITU 分区** ：与前述无线电管理区域（1/2/3 区）不同，这里是把全球细分为约 90 个编号小区，用于 IARU 相关活动与成绩计算。位于我国境内的 ITU 分区为 **33、42、43、44、50** 。
+
+注意 CQ 分区与 ITU 分区编号体系完全不同，不可混用。
+
+## 四、标准字母解释法（ITU 语音字母表）
+
+在通话中为了清晰表述呼号或重要消息里的英语字母，应使用 **标准的字母解释法** （ITU 语音字母表）。每个字母对应一个单词，数字则直接读出。常用对照如下：
+
+| 字母/数字 | 拼读 | 字母/数字 | 拼读 |
+|-----------|------|-----------|------|
+| A | Alfa | N | November |
+| B | Bravo | O | Oscar |
+| C | Charlie | P | Papa |
+| D | Delta | Q | Quebec |
+| E | Echo | R | Romeo |
+| F | Foxtrot | G | Golf |
+| H | Hotel | S | Sierra |
+| I | India | T | Tango |
+| J | Juliett | U | Uniform |
+| K | Kilo | V | Victor |
+| L | Lima | W | Whiskey |
+| M | Mike | X | Xray |
+| Y | Yankee | Z | Zulu |
+| 0–9 | Zero、One、Two … Nine | | |
+
+据此，呼号可逐字拼读，例如 **BH1XYZ** = Bravo Hotel One Xray Yankee Zulu；**B7CRA** = Bravo Seven Charlie Romeo Alfa；**4U1UN** = Four Uniform One Uniform November；**VR2ZQW** = Victor Romeo Two Zulu Quebec Whiskey；**BS7H** = Bravo Sierra Seven Hotel；**JA2IGY** = Juliett Alfa Two India Golf Yankee。当呼号带有"/"表示异地操作或便携操作时，用 **Portable** 引出后续部分，如 **K3TRX/VE6** = Kilo Three Tango Romeo Xray Portable Victor Echo Six，**3DA0FZ/DL5CMP** = Three Delta Alfa Zero Foxtrot Zulu Portable Delta Lima Five Charlie Mike Papa。
+
+## 五、另类字母解释法
+
+在 DX（远距离）通联中，爱好者还流传一些 **另类字母解释法** ，用一串有意义的词组对应呼号字母，便于记忆与趣味传播。例如 **Japan America Two Italy Germany Yokohama** 对应 **JA2IGY** ； **Florida Five England Queen United** 对应 **F5EQU** ； **Washington Honolulu Eight Zanzibar Denmark Portugal** 对应 **WH8ZDP** ； **Sugar Five Three Mexico Norway Ontario** 对应 **S53MNO** 。这类解释法属爱好者文化，正式、清晰的通信仍以标准 ITU 字母表为准。

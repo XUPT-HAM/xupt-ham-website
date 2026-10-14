@@ -190,7 +190,7 @@ $$ \lambda = \frac{c}{f} $$
 ```
 
 ```mdx
-$$ G_{\text{dB}} = 10 \log_{10}\!\left(\frac{P_{\text{out}}}{P_{\text{in}}}\right) $$
+$$ G_{\mathrm{dB}} = 10 \log_{10}\!\left(\frac{P_{\mathrm{out}}}{P_{\mathrm{in}}}\right) $$
 ```
 
 公式样式由 `src/styles/katex.css`（引入 KaTeX 官方 CSS）提供，已通过 `customCss` 接入，无需额外配置。
