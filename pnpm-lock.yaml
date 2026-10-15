@@ -24,6 +24,9 @@ importers:
       '@astrojs/markdown-remark':
         specifier: ^7.3.2
         version: 7.3.2
+      '@astrojs/sitemap':
+        specifier: ^3.7.4
+        version: 3.7.4
       katex:
         specifier: ^0.19.0
         version: 0.19.0

@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightRosePine from 'starlight-theme-rose-pine';
+import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { unified } from '@astrojs/markdown-remark';
@@ -8,7 +9,7 @@ import { unified } from '@astrojs/markdown-remark';
 // https://starlight.astro.build/reference/configuration/
 export default defineConfig({
 	// `site` 是站点的正式部署域名，@astrojs/sitemap 集成（Starlight 内置）需要它才能生成 sitemap
-	site: 'https://xupt-ham.example.com',
+	site: 'https://xupt-ham.pages.dev',
 	// 关闭 Astro 自带的开发工具栏（dev 模式下浮现在页面底部的悬浮条）
 	devToolbar: { enabled: false },
 	// 数学公式渲染：Astro 7 推荐用 `unified` 处理器写法（Sätteri 时代不再直接用已弃用的 markdown.remarkPlugins）。
@@ -20,6 +21,7 @@ export default defineConfig({
 		}),
 	},
 	integrations: [
+		sitemap(),
 		starlight({
 			plugins: [starlightRosePine()],
 			title: '五九电波社',

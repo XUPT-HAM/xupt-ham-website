@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xupt-ham.pages.dev/sitemap-index.xml
