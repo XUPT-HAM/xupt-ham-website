@@ -1,0 +1,85 @@
+---
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { downloadSections } from '../config/downloads';
+
+// 浏览器会直接“预览”而非下载的文本类扩展名
+const TEXT_EXT =
+	/\.(txt|text|md|markdown|csv|tsv|json|log|xml|html?|yml|yaml|java|js|mjs|cjs|ts|jsx|tsx|css|scss|py|rb|sh|bat|ps1|sql|cfg|ini|gitignore)$/i;
+
+// 判断是否为外链（跨域）
+const isExternal = (href: string) => /^(https?:)?\/\//i.test(href) || href.startsWith('//');
+
+// 取 URL 路径中最后的文件名，作为 download 建议名（去掉 query/hash 与编码）
+const basename = (href: string) => {
+	try {
+		return decodeURIComponent(new URL(href, 'https://x').pathname.split('/').pop() || 'download');
+	} catch {
+		return href.split('/').pop() || 'download';
+	}
+};
+---
+
+{
+	downloadSections.map((section) => (
+		<section>
+			<h2>{section.title}</h2>
+			{
+				section.items.length > 0 ? (
+					<CardGrid>
+						{section.items.map((item) => {
+							const external = isExternal(item.href);
+							const text = TEXT_EXT.test(item.href);
+							const name = basename(item.href);
+							return (
+								<LinkCard
+									href={item.href}
+									title={item.name}
+									description={item.description}
+									download={name}
+									target={external ? '_blank' : undefined}
+									rel={external ? 'noopener noreferrer' : undefined}
+									data-force-download={text && external ? '1' : undefined}
+								/>
+							);
+						})}
+					</CardGrid>
+				) : (
+					<p>暂无文件。</p>
+				)
+			}
+		</section>
+	))
+}
+
+<script>
+	// 跨域文本文件：用 fetch → Blob 强制触发下载，绕过浏览器“直接预览”。
+	// 仅当目标域名允许 CORS 时生效；否则回退为在新标签打开（文本仍可能被预览，属浏览器安全限制）。
+	document.querySelectorAll<HTMLAnchorElement>('a[data-force-download="1"]').forEach((a) => {
+		a.addEventListener('click', async (e) => {
+			const url = a.href;
+			// 同域链接交给原生 download 属性处理，这里不拦截
+			if (new URL(url, location.href).origin === location.origin) return;
+			e.preventDefault();
+			try {
+				const res = await fetch(url, { credentials: 'omit' });
+				if (!res.ok) throw new Error(String(res.status));
+				const blob = await res.blob();
+				const path = url.split('?')[0].split('#')[0];
+				const ext = (path.match(/\.[^./\\]+$/) || ['.txt'])[0];
+				const base = a.getAttribute('download') || 'download';
+				const suggested = ext.startsWith('.') && base.endsWith(ext) ? base : base + ext;
+				const obj = URL.createObjectURL(blob);
+				const tmp = document.createElement('a');
+				tmp.href = obj;
+				tmp.download = suggested;
+				document.body.appendChild(tmp);
+				tmp.click();
+				tmp.remove();
+				URL.revokeObjectURL(obj);
+			} catch {
+				// CORS / 网络失败：回退为在新标签打开
+				window.open(url, '_blank', 'noopener');
+			}
+		});
+	});
+</script>

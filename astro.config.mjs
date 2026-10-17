@@ -25,6 +25,8 @@ export default defineConfig({
 		starlight({
 			plugins: [starlightRosePine()],
 			title: '五九电波社',
+			// 站点图标：改用 src/assets/club-icon.png 的副本（放在 public/ 下才能被直接引用）
+			favicon: '/club-icon.png',
 			// 自定义全局样式（如首页卡片里的按钮样式 .club-btn）
 			customCss: ['./src/styles/custom.css', './src/styles/katex.css'],
 			// 默认语言放在站点根路径 `/`（不加前缀），这是 Astro/Starlight 推荐的 i18n 模式。

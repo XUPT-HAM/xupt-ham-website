@@ -1,0 +1,17 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DownloadCenter from '../components/DownloadCenter.astro';
+---
+
+<StarlightPage
+	frontmatter={{
+		title: '下载中心',
+		description: '五九电波社资料下载中心，提供操作证题库、设台文件、学习资料等文件的下载。',
+		tableOfContents: false,
+	}}
+	hasSidebar={false}
+>
+	<p>以下资料供社员与无线电爱好者下载使用，国内下载速度较慢，下载失败时可在群内需求帮助。</p>
+
+	<DownloadCenter />
+</StarlightPage>

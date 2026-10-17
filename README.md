@@ -70,7 +70,8 @@ npx wrangler pages dev dist
 ├── package.json
 ├── src/
 │   ├── assets/             # 图片等静态资源
-│   ├── components/         # 自定义组件（如覆盖 Starlight 的 Header.astro）
+│   ├── components/         # 自定义组件（如覆盖 Starlight 的 Header.astro、下载中心 DownloadCenter.astro）
+│   ├── config/             # 配置文件（如下载中心 downloads.ts）
 │   ├── data/               # 结构化配置数据（如社员风采成员 members.ts）
 │   ├── content/
 │   │   ├── activities/     # 近期活动帖子（每篇一个 .md/.mdx，详见下方「发布一篇活动」）
@@ -347,6 +348,46 @@ coverAlt: 活动合影
 ### 3. 删除一条友链
 
 把对应的整行 `<LinkCard ... />` 删掉即可；若整个分组都不再需要，连 `<CardGrid> ... </CardGrid>` 一起删除。
+
+预览：`pnpm dev`；构建：`pnpm build`。
+
+## 下载中心页面（文件下载管理）
+
+「下载中心」是一个独立页面（`/downloads/`），位于顶部导航栏「联系我们」与「知识库」之间，顶部导航可直接进入。页面**无左右侧边栏**，按「操作证题库 / 设台文件 / 学习资料 / 其他」四个栏目展示，每个栏目下用 Starlight 的 `CardGrid` + `LinkCard` 渲染对应文件，点击卡片即下载指向的文件。
+
+页面由「配置 + 渲染组件」两部分驱动，新增 / 修改文件只需改配置，不用碰页面代码。
+
+### 文件位置
+
+- 页面内容：`src/pages/downloads.astro`（用 `StarlightPage` 包裹，`hasSidebar={false}` 关闭左侧栏、`frontmatter.tableOfContents: false` 关闭右侧目录，并引入渲染组件）
+- 渲染组件：`src/components/DownloadCenter.astro`（读取配置、按栏目输出 `CardGrid` / `LinkCard`）
+- 配置文件：`src/config/downloads.ts`（**所有下载项都在这里维护**）
+
+### 1. 增加一个可下载文件
+
+1. 把文件放进 `public/downloads/` 目录（文件名尽量用英文 / 拼音，避免空格与中文，防止链接编码问题）。
+2. 打开 `src/config/downloads.ts`，在对应栏目的 `items` 数组里追加一项：
+
+   ```ts
+   {
+     name: 'A 类业余电台操作技术能力验证题库',
+     description: '一句话描述这个文件的内容与用途',
+     href: '/downloads/文件名.pdf',
+   }
+   ```
+
+3. 重新构建（`pnpm build`）即可生效。
+
+### 2. 修改 / 删除一个文件
+
+- 修改：直接改 `downloads.ts` 中对应项的 `name` / `description` / `href`。
+- 删除：把对应项从 `items` 数组里删掉；若文件不再需要，也一并删除 `public/downloads/` 下的实体文件。
+
+### 3. 增加 / 删除一个栏目
+
+栏目的增删改都在 `src/config/downloads.ts` 顶部的 `downloadSections` 数组里：新增 / 删除一个 `{ title, items }` 对象即可，顺序即展示顺序。
+
+> 构建前请确保 `href` 指向的文件确实存在于 `public/downloads/`，否则点击会 404。
 
 预览：`pnpm dev`；构建：`pnpm build`。
 

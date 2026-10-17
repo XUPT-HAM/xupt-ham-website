@@ -7,12 +7,12 @@ const t = Astro.locals.t ?? ((key: string) => key);
 const base = Astro.currentLocale === 'en' ? '/en' : '';
 const links = [
 	{ href: `${base}/`, label: t('nav.home') },
-	{ href: `${base}/activities/`, label: t('nav.activities') },
-	{ href: `${base}/members/`, label: t('nav.members') },
 	{ href: `${base}/about/`, label: t('nav.about') },
+	{ href: `${base}/activities/`, label: t('nav.activities') },
 	{ href: `${base}/history/`, label: t('nav.history') },
-	{ href: `${base}/contact/`, label: t('nav.contact') },
 	{ href: `${base}/links/`, label: t('nav.links') },
+	{ href: `${base}/contact/`, label: t('nav.contact') },
+	{ href: `${base}/downloads/`, label: t('nav.download') },
 	{ href: `${base}/start/01-about-wiki/`, label: t('nav.knowledge') },
 ];
 ---
