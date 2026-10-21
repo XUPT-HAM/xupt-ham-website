@@ -40,27 +40,127 @@ export default defineConfig({
 			// 使用 autogenerate 让侧边栏按各语言目录自动生成，链接会随 locale 正确切换，
 			// 不会出现「英文版侧边栏指向中文页面」的问题。
 			sidebar: [
-				{ label: '开始', items: [{ autogenerate: { directory: 'start' } }] },
+				{ label: '开始', collapsed: true, items: [{ autogenerate: { directory: 'start' } }] },
 				{
-				label: '操作证考试知识点',
-				items: [
-					{ label: '无线电管理法规', items: [{ autogenerate: { directory: 'exam/01-radio-regulation' } }] },
-					{ label: '操作基础', items: [{ autogenerate: { directory: 'exam/02-operation' } }] },
-					{ label: '收发信机与天线', items: [{ autogenerate: { directory: 'exam/03-transceiver-antenna' } }] },
-					{ label: '电学基础', items: [{ autogenerate: { directory: 'exam/04-electronics' } }] },
-					{ label: '发射设备与电磁环境', items: [{ autogenerate: { directory: 'exam/05-transmitter-emc' } }] },
-				],
-			},
-				{ label: '通联部', items: [{ autogenerate: { directory: 'communication' } }] },
-				{ label: '技术部', items: [{ autogenerate: { directory: 'technical' } }] },
+					label: '操作证考试知识点',
+					collapsed: true,
+					items: [
+						{ label: '无线电管理法规', collapsed: true, items: [{ autogenerate: { directory: 'exam/01-radio-regulation' } }] },
+						{ label: '操作基础', collapsed: true, items: [{ autogenerate: { directory: 'exam/02-operation' } }] },
+						{ label: '收发信机与天线', collapsed: true, items: [{ autogenerate: { directory: 'exam/03-transceiver-antenna' } }] },
+						{ label: '电学基础', collapsed: true, items: [{ autogenerate: { directory: 'exam/04-electronics' } }] },
+						{ label: '发射设备与电磁环境', collapsed: true, items: [{ autogenerate: { directory: 'exam/05-transmitter-emc' } }] },
+					],
+				},
+				{
+					label: '通联部',
+					collapsed: true,
+					items: [
+						{ label: '关于通联部', link: '/communication/01-about-communication/' },
+						{
+							label: 'U/V段超短波通联',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'communication/01-uv-comm' } }],
+						},
+						{
+							label: 'QSL卡',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'communication/02-qsl' } }],
+						},
+						{
+							label: '短波通联',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'communication/03-shortwave' } }],
+						},
+						{
+							label: '莫尔斯电码（CW）',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'communication/04-cw' } }],
+						},
+						{
+							label: 'FT8 数字模式',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'communication/05-ft8' } }],
+						},
+						{
+							label: 'C4FM（Fusion 数字语音）',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'communication/06-c4fm' } }],
+						},
+						{
+							label: 'FMO 互联网模拟通联',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'communication/07-fmo' } }],
+						},
+						{
+							label: 'MMDVM 数字热点',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'communication/08-mmdvm' } }],
+						},
+					],
+				},
+				{
+					label: '技术部',
+					collapsed: true,
+					items: [
+						{ label: '关于技术部', link: '/technical/01-about-technical/' },
+						{
+							label: '国家授时中心守听',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'technical/01-national-time-center' } }],
+						},
+						{
+							label: '自动位置报告系统',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'technical/02-aprs' } }],
+						},
+						{
+							label: 'SDR 软件无线电',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'technical/03-sdr' } }],
+						},
+						{
+							label: 'QRP 低功率',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'technical/04-qrp' } }],
+						},
+						{
+							label: '天线',
+							collapsed: true,
+							items: [
+								{ label: '偶极天线', collapsed: true, items: [{ autogenerate: { directory: 'technical/05-antenna/01-dipole' } }] },
+								{ label: 'GP 天线', collapsed: true, items: [{ autogenerate: { directory: 'technical/05-antenna/02-gp' } }] },
+								{ label: '八木天线', collapsed: true, items: [{ autogenerate: { directory: 'technical/05-antenna/03-yagi' } }] },
+								{ label: '螺旋天线', collapsed: true, items: [{ autogenerate: { directory: 'technical/05-antenna/04-helical' } }] },
+							],
+						},
+					],
+				},
 				{
 					label: '卫星部',
+					collapsed: true,
 					items: [
 						{ label: '关于卫星部', link: '/satellite/01-about-satellite/' },
 						{ label: '追星方法', link: '/satellite/02-sat-chasing/' },
 						{
+							label: 'AAAA 天文与天体学',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'satellite/01-astronomy' } }],
+						},
+						{
 							label: '慢扫描电视',
+							collapsed: true,
 							items: [{ autogenerate: { directory: 'satellite/03-sstv' } }],
+						},
+						{
+							label: '数字视频',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'satellite/04-ssdv' } }],
+						},
+						{
+							label: '卫星通联',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'satellite/05-sat-comm' } }],
 						},
 						{ label: '测试', link: '/satellite/04-md-test/' },
 					],

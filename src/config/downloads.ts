@@ -64,6 +64,11 @@ export const downloadSections: DownloadSection[] = [
 				description: '设计QSL卡素材',
 				href: 'https://raw.githubusercontent.com/XUPT-HAM/download-files/refs/heads/main/CRAC%E5%BE%BD%E6%A0%87-%E8%AE%BE%E8%AE%A1QSL%E5%8D%A1%E7%B4%A0%E6%9D%90.7z',
 			},
+			{
+				name: '西安邮电学院校史',
+				description: '西安邮电学院校史',
+				href: 'https://raw.githubusercontent.com/XUPT-HAM/download-files/refs/heads/main/%E8%A5%BF%E5%AE%89%E9%82%AE%E7%94%B5%E5%AD%A6%E9%99%A2%E6%A0%A1%E5%8F%B2.pdf',
+			},
 		],
 	},
 ];
