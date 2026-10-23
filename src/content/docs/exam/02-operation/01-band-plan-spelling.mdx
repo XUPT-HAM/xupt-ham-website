@@ -5,7 +5,7 @@ description: 讲解频段规划（Band Plan）、分区规则及通联中常用�
 
 ## ITU 区域划分
 
-为在世界范围内协调频率划分，国际电信联盟（ **ITU** ）在 **《无线电规则》** 中把全球划分为 **3 个无线电管理区域** ：
+为在世界范围内协调频率划分，国际电信联盟（ **International Telecommunication Union，ITU** ）在 **《无线电规则》** 中把全球划分为 **3 个无线电管理区域** ：
 
 | 分区 | 包含地区 |
 | --- | --- |
@@ -13,7 +13,7 @@ description: 讲解频段规划（Band Plan）、分区规则及通联中常用�
 | 第 2 区 | 南北美洲 |
 | 第 3 区 | 亚洲（除俄罗斯、蒙古和部分西北亚洲国家）和大洋洲 |
 
-**中国位于第 3 区** 。这一划分方法由 **ITU** 在其 **《无线电规则》** 中制定公布，并非由美国 ARRL、《CQ》杂志或 IARU 等机构规定。
+**中国位于第 3 区** 。这一划分方法由 **ITU** 在其 **《无线电规则》** 中制定公布，并非由美国 ARRL（American Radio Relay League）、《CQ》杂志或 IARU（International Amateur Radio Union，国际业余无线电联盟）等机构规定。
 
 ## 频段规划、载波边界计算与卫星业务段
 
@@ -23,8 +23,8 @@ description: 讲解频段规划（Band Plan）、分区规则及通联中常用�
 
 计算方法：设规划频段为 $[f_L, f_U]$，发射带宽 $B$，频率容限 $\Delta f$。
 
-- 对于 **FM（调频）** ，信号对称分布在载波两侧，各占 $\dfrac{B}{2}$，故主载波需满足 $f_L + \dfrac{B}{2} + \Delta f \leqslant f_c \leqslant f_U - \dfrac{B}{2} - \Delta f$。例如 2 米 FM（ $B<20\,\mathrm{kHz}$ 、 $\Delta f \leqslant 2\,\mathrm{kHz}$ ）：下限 $144.035 + 10 + 2 = 144.047\,\mathrm{MHz}$ ，上限 $145.800 - 10 - 2 = 145.788\,\mathrm{MHz}$ 。
-- 对于 **USB（上边带）** ，信号从载波向上延伸 $B$ ，载波即信号下沿，故 $f_L + \Delta f \leqslant f_c \leqslant f_U - B - \Delta f$ 。例如 2 米 USB（ $B<3\,\mathrm{kHz}$ ）：下限 $144.035 + 2 = 144.037\,\mathrm{MHz}$ ，上限 $145.800 - 3 - 2 = 145.795\,\mathrm{MHz}$ ；70 厘米 USB（ $438\sim440\,\mathrm{MHz}$ ）：下限 $438.002\,\mathrm{MHz}$ ，上限 $439.995\,\mathrm{MHz}$ 。
+- 对于 **FM（Frequency Modulation，调频）** ，信号对称分布在载波两侧，各占 $\dfrac{B}{2}$，故主载波需满足 $f_L + \dfrac{B}{2} + \Delta f \leqslant f_c \leqslant f_U - \dfrac{B}{2} - \Delta f$。例如 2 米 FM（ $B<20\,\mathrm{kHz}$ 、 $\Delta f \leqslant 2\,\mathrm{kHz}$ ）：下限 $144.035 + 10 + 2 = 144.047\,\mathrm{MHz}$ ，上限 $145.800 - 10 - 2 = 145.788\,\mathrm{MHz}$ 。
+- 对于 **USB（Upper Sideband，上边带）** ，信号从载波向上延伸 $B$ ，载波即信号下沿，故 $f_L + \Delta f \leqslant f_c \leqslant f_U - B - \Delta f$ 。例如 2 米 USB（ $B<3\,\mathrm{kHz}$ ）：下限 $144.035 + 2 = 144.037\,\mathrm{MHz}$ ，上限 $145.800 - 3 - 2 = 145.795\,\mathrm{MHz}$ ；70 厘米 USB（ $438\sim440\,\mathrm{MHz}$ ）：下限 $438.002\,\mathrm{MHz}$ ，上限 $439.995\,\mathrm{MHz}$ 。就单个信号的**占用频率范围**而言：USB 信号从载频向上占满整个带宽，LSB 信号则从载频向下占满带宽。例如显示载频 $7.178\,\mathrm{MHz}$ 的 $3\,\mathrm{kHz}$ 宽 LSB 信号，实际占用 $7.175\,\mathrm{MHz}$ ~ $7.178\,\mathrm{MHz}$；显示载频 $14.347\,\mathrm{MHz}$ 的 $3\,\mathrm{kHz}$ 宽 USB 信号，占用 $14.347\,\mathrm{MHz}$ ~ $14.350\,\mathrm{MHz}$。故用 LSB 时载频须**高出频段下边缘至少一个带宽**，用 USB 时载频须**低于频段上边缘至少一个带宽**，以免越界。
 
 各波段中专门留给 **卫星业余业务** 的频段，话音及其他常规通信不应占用：10 米波段为 $29.3\,\mathrm{MHz}$ ~ $29.51\,\mathrm{MHz}$，2 米波段为 $145.8\,\mathrm{MHz}$ ~ $146\,\mathrm{MHz}$，70 厘米波段为 $435\,\mathrm{MHz}$ ~ $438\,\mathrm{MHz}$。
 

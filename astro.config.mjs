@@ -134,6 +134,11 @@ export default defineConfig({
 								{ label: '螺旋天线', collapsed: true, items: [{ autogenerate: { directory: 'technical/05-antenna/04-helical' } }] },
 							],
 						},
+						{
+							label: '无线电测向',
+							collapsed: true,
+							items: [{ autogenerate: { directory: 'technical/06-ardf' } }],
+						},
 					],
 				},
 				{

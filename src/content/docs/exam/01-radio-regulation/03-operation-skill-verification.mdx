@@ -26,13 +26,13 @@ import { Aside } from '@astrojs/starlight/components';
 
 | 频段缩写 | 中文名称 | 频率范围                                     |
 | ---- | ---- | ---------------------------------------- |
-| LF   | 低频   | $30\,\mathrm{kHz}$ ~ $300\,\mathrm{kHz}$ |
-| MF   | 中频   | $300\,\mathrm{kHz}$ ~ $3\,\mathrm{MHz}$  |
-| HF   | 短波   | $3\,\mathrm{MHz}$ ~ $30\,\mathrm{MHz}$   |
-| VHF  | 甚高频  | $30\,\mathrm{MHz}$ ~ $300\,\mathrm{MHz}$ |
-| UHF  | 特高频  | $300\,\mathrm{MHz}$ ~ $3\,\mathrm{GHz}$  |
+| LF   | 低频（Low Frequency）   | $30\,\mathrm{kHz}$ ~ $300\,\mathrm{kHz}$ |
+| MF   | 中频（Medium Frequency）   | $300\,\mathrm{kHz}$ ~ $3\,\mathrm{MHz}$  |
+| HF   | 短波（High Frequency）   | $3\,\mathrm{MHz}$ ~ $30\,\mathrm{MHz}$   |
+| VHF  | 甚高频（Very High Frequency）  | $30\,\mathrm{MHz}$ ~ $300\,\mathrm{MHz}$ |
+| UHF  | 特高频（Ultra High Frequency）  | $300\,\mathrm{MHz}$ ~ $3\,\mathrm{GHz}$  |
 
-其中 **HF（短波）** 以电离层反射实现远距离通信而著称；**VHF/UHF** 多用于本地、视距范围内的通信。
+其中 **HF（High Frequency，短波）** 以电离层反射实现远距离通信而著称；**VHF/UHF（Very High Frequency / Ultra High Frequency，甚高频/特高频）** 多用于本地、视距范围内的通信。
 
 各类别允许工作的频率范围与最大发射功率如下：
 
@@ -59,7 +59,7 @@ import { Aside } from '@astrojs/starlight/components';
 - 取得 **C 类** 证书：范围最广，HF 频段最大发射功率可至 $1000\,\mathrm{W}$；并因开展 **特殊技术试验、通联** 等活动的实际需要，经批准可设置、使用 **大于 $25\,\mathrm{W}$** 的 VHF 频段电台。
 
 <Aside>
-    等效全向辐射功率（e\.i\.r\.p）指发射机输出功率经过馈线损耗后，再乘以天线相对于理想全向天线的增益，折算成在最大辐射方向上等效的辐射功率，简单说就是把发射功率和天线增益合并成一个数值，例如 $1\mathrm{W\, e.i.r.p}$ 就表示在最强方向上等效于一个 $1\mathrm{W}$ 理想全向天线向外辐射的能量。
+    等效全向辐射功率（Equivalent Isotropically Radiated Power，e.i.r.p）指发射机输出功率经过馈线损耗后，再乘以天线相对于理想全向天线的增益，折算成在最大辐射方向上等效的辐射功率，简单说就是把发射功率和天线增益合并成一个数值，例如 $1\mathrm{W\, e.i.r.p}$ 就表示在最强方向上等效于一个 $1\mathrm{W}$ 理想全向天线向外辐射的能量。
     
     根据《业余无线电台管理办法》，在业余无线电中，取得B类操作证者按规定可在 $30\mathrm{MHz}$ 以下频段申请设置最大发射功率小于 $15\mathrm{W}$ 的业余电台，LF频段也属于 $30\mathrm{MHz}$ 以下，所以从操作证权限看“最大发射功率小于 $15\mathrm{W}$ ”这个说法是没有问题的；但根据《中华人民共和国无线电频率划分规定》，LF频段里的 $135.7\mathrm{kHz}$ ~ $137.8\mathrm{kHz}$ 业余频段还有更严格的频率划分限制，要求业余台站的最大辐射功率不得超过 $1\mathrm{W\, e.i.r.p}$ 。
 </Aside>

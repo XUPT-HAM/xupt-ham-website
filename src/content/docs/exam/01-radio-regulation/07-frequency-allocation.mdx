@@ -68,17 +68,17 @@ description: 介绍我国及国际业余业务频率划分、波段规划与各�
 - **共用 · 唯一主要业务** ：共有 **3 个** 频段，其中位于 **$3\,\mathrm{GHz}$ 以下** 的是 **$144\sim146\,\mathrm{MHz}$** 。
 - **共用 · 次要业务** ： **$1200\,\mathrm{MHz}$ 以下** 有 **$135.7\,\mathrm{kHz}$、$5351.5\,\mathrm{kHz}$、$10.1\,\mathrm{MHz}$、$430\,\mathrm{MHz}$** 等。
 
-关于 40 米波段，其在 ITU 各分区的频率范围略有差异： **ITU 1 区、3 区为 $7.0\sim7.2\,\mathrm{MHz}$，2 区为 $7.0\sim7.3\,\mathrm{MHz}$** ，业余业务和卫星业余业务的使用状态均为 **专用** 。
+关于 40 米波段，其在 ITU（International Telecommunication Union，国际电信联盟）各分区的频率范围略有差异： **ITU 1 区、3 区为 $7.0\sim7.2\,\mathrm{MHz}$，2 区为 $7.0\sim7.3\,\mathrm{MHz}$** ，业余业务和卫星业余业务的使用状态均为 **专用** 。
 
 关于 $430\sim440\,\mathrm{MHz}$ 这一在我国作为 **次要业务** 共用的频段，其在该频段被划分的 **主要业务是无线电定位和航空无线电导航** ，这也是业余台在此必须让路于这些业务的根本原因。
 
-**WARC 频段** 是国际业余无线电界对 1976 年世界无线电行政大会（WARC-76）新分配给业余业务的三个 HF 频段的俗称，范围是 $10.1\,\mathrm{MHz}$ ~ $10.15\,\mathrm{MHz}$ 、 $18.068\,\mathrm{MHz}$ ~ $18.168\,\mathrm{MHz}$ 、 $24.89\,\mathrm{MHz}$ ~ $24.99\,\mathrm{MHz}$ 。
+**WARC 频段** 是国际业余无线电界对 1976 年世界无线电行政大会（World Administrative Radio Conference，WARC-76）新分配给业余业务的三个 HF 频段的俗称，范围是 $10.1\,\mathrm{MHz}$ ~ $10.15\,\mathrm{MHz}$ 、 $18.068\,\mathrm{MHz}$ ~ $18.168\,\mathrm{MHz}$ 、 $24.89\,\mathrm{MHz}$ ~ $24.99\,\mathrm{MHz}$ 。
 
 上述波段与频率到波段的归属，是识别"某频率属于哪个波段"的基础。例如： $135.7\,\mathrm{kHz}$ ~ $137.8\,\mathrm{kHz}$ 属 LF/低频（长波）； $1800\,\mathrm{kHz}$ ~ $2000\,\mathrm{kHz}$ 属 MF/中频（中波）；$28\,\mathrm{MHz}$ ~ $29.7\,\mathrm{MHz}$ 属 HF/高频（短波）；$50\,\mathrm{MHz}$ ~ $54\,\mathrm{MHz}$ 属 VHF/甚高频（米波）； $2300\,\mathrm{MHz}$ ~ $2450\,\mathrm{MHz}$ （接近无线宽带 WiFi）属 UHF/特高频（分米波）； $5.65\,\mathrm{GHz}$ ~ $5.85\,\mathrm{GHz}$ （接近 C 波段卫星电视）与 $10\,\mathrm{GHz}$ ~ $10.5\,\mathrm{GHz}$（接近 Ku 波段卫星电视）属 SHF/超高频（厘米波）； $241\,\mathrm{GHz}$ ~ $250\,\mathrm{GHz}$ 属 EHF/极高频（毫米波）。
 
 ## 单边带可用频率与边界计算
 
-在 HF 单边带（SSB）语音通信中，存在约定俗成的边带选择习惯： **低于 $10\,\mathrm{MHz}$ 的 HF 频段通常用下边带（LSB）** ， **$10\,\mathrm{MHz}$ 及以上的 HF 频段通常用上边带（USB）** 。单边带发射只传送一个边带、抑制载波，因此信号只占一个边带的宽度。
+在 HF 单边带（Single Sideband，SSB）语音通信中，存在约定俗成的边带选择习惯： **低于 $10\,\mathrm{MHz}$ 的 HF 频段通常用下边带（Lower Sideband，LSB）** ， **$10\,\mathrm{MHz}$ 及以上的 HF 频段通常用上边带（Upper Sideband，USB）** 。单边带发射只传送一个边带、抑制载波，因此信号只占一个边带的宽度。
 
 由于信号只占边带宽度，实际可工作的 **发信（载波）频率** 必须满足边界约束：
 
@@ -97,7 +97,7 @@ description: 介绍我国及国际业余业务频率划分、波段规划与各�
 | $29\,\mathrm{MHz}$ | USB | $28.3\,\mathrm{MHz}$ ~ $29.3\,\mathrm{MHz}$ |
 | $29\,\mathrm{MHz}$ | FM | $29.51\,\mathrm{MHz}$ ~ $29.7\,\mathrm{MHz}$ |
 
-其中对 $21\,\mathrm{MHz}$ 排除的小段，是为了避让 **IARU 信标** 工作频率。IARU 信标是业余无线电界用于探测电离层传播的基准信标，其工作频率为 $14.100\,\mathrm{MHz}$ 、 $18.110\,\mathrm{MHz}$ 、 $21.150\,\mathrm{MHz}$ 、 $24.930\,\mathrm{MHz}$ 、 $28.200\,\mathrm{MHz}$ ，短波业余电台应避免在其 **$\pm500\,\mathrm{Hz}$** 范围内发射。
+其中对 $21\,\mathrm{MHz}$ 排除的小段，是为了避让 **IARU（International Amateur Radio Union，国际业余无线电联盟）信标** 工作频率。IARU 信标是业余无线电界用于探测电离层传播的基准信标，其工作频率为 $14.100\,\mathrm{MHz}$ 、 $18.110\,\mathrm{MHz}$ 、 $21.150\,\mathrm{MHz}$ 、 $24.930\,\mathrm{MHz}$ 、 $28.200\,\mathrm{MHz}$ ，短波业余电台应避免在其 **$\pm500\,\mathrm{Hz}$** 范围内发射。
 
 在 VHF/UHF 进行本地联络时，也有应避开的保护频率：在 $144\,\mathrm{MHz}$ 频段应避开 $144\,\mathrm{MHz}$ ~ $144.035\,\mathrm{MHz}$ 和 $145.8\,\mathrm{MHz}$ ~ $146\,\mathrm{MHz}$；在 $430\,\mathrm{MHz}$ 频段应避开 $431.9\,\mathrm{MHz}$ ~ $432.240\,\mathrm{MHz}$ 和 $435\,\mathrm{MHz}$ ~ $438\,\mathrm{MHz}$ 。这些频段通常保留给卫星业务、信标或弱信号工作，本地话音联络应主动避让。
 
