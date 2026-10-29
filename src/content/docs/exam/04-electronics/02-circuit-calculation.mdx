@@ -30,7 +30,7 @@ $$
     V_{\mathrm{rms}} = \dfrac{V_p}{\sqrt{2}} = \dfrac{V_{\mathrm{pp}}}{2\sqrt{2}}
 $$
 
-> 例题：峰峰值为 $100\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{100}{2\sqrt{2}} \approx 35.4\,\mathrm{V}$ ；峰值为 $100\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{100}{\sqrt{2}} \approx 70.7\,\mathrm{V}$ 。
+> 例题：峰峰值为 $100\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{100}{2\sqrt{2}} = \dfrac{100}{2\times1.414} \approx 35.4\,\mathrm{V}$ ；峰值为 $100\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{100}{\sqrt{2}} = \dfrac{100}{1.414} \approx 70.7\,\mathrm{V}$ 。
 
 > 例题：峰峰值为 $340\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{340}{2\sqrt{2}} \approx 120\,\mathrm{V}$ ；峰值 $20\,\mathrm{V}$ （ $100\,\mathrm{Hz}$ ）的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{20}{\sqrt{2}} \approx 14.14\,\mathrm{V}$ 。
 
@@ -44,7 +44,7 @@ $$
 
 > 例题：若有效值 $120\,\mathrm{V}$ 的交流再串联一只二极管做半波整流，只有半个周期通过，平均功率减半，于是蓄电池侧发热又约为整流侧的 **$2$ 倍** 。
 
-> 例题：若有效值 $120\,\mathrm{V}$ 交流经带电容滤波的全波整流，滤波后的直流近似等于交流峰值 $120\sqrt{2}\approx 170\,\mathrm{V}$ ——但当题目中交流本就以“峰值 $120\,\mathrm{V}$ ”给出时，滤波后得到约 $120\,\mathrm{V}$ 直流，与 $120\,\mathrm{V}$ 蓄电池发热 **大致相同** 。
+> 例题：若有效值 $120\,\mathrm{V}$ 交流经带电容滤波的全波整流，滤波后的直流近似等于交流峰值 $120\sqrt{2}=120\times1.414\approx 170\,\mathrm{V}$ ——但当题目中交流本就以“峰值 $120\,\mathrm{V}$ ”给出时，滤波后得到约 $120\,\mathrm{V}$ 直流，与 $120\,\mathrm{V}$ 蓄电池发热 **大致相同** 。
 
 > 例题：用有效值同为 $120\,\mathrm{V}$ 的 $50\,\mathrm{Hz}$ 正弦与 $10\,\mathrm{kHz}$ 方波分别驱动同一电阻，因有效值相同，发热 **大致相同** （纯电阻对频率与波形不敏感）。
 
@@ -80,7 +80,7 @@ RL 串联突然接到直流电压 $U$ ：电感电压从 $U$ 突跳到 $0$ 后�
 
 电感之所以“抗拒”电流变化，根源是 **反电动势（back EMF）** ：线圈中电流变化时，变化的磁场会感应出一个方向 **与原电动势相反** 的电压来阻碍这种变化，这正是电感电流不能突变、只能按 $\tau=L/R$ 的指数规律逐渐建立的原因。
 
-经过 $n$ 个时间常数后，充放电完成的程度由指数函数给出：电容电压充到 $V(1-e^{-n})$ 、放掉到 $V e^{-n}$ 。所以经过 **$2\tau$** ，电容约充到 **$86.5\%$** （ $1-e^{-2}\approx0.865$ ）、放电剩约 **$13.5\%$** （ $e^{-2}\approx0.135$ ）；经过 **$5\tau$** 已充到约 **$99.3\%$** ，可视为基本完成。
+经过 $n$ 个时间常数后，充放电完成的程度由指数函数给出：电容电压充到 $V(1-e^{-n})$ 、放掉到 $V e^{-n}$ 。所以经过 **$2\tau$** ，电容约充到 **$86.5\%$** （ $1-e^{-2}=1-\dfrac{1}{e^2}=1-\dfrac{1}{7.389}\approx0.865$ ）、放电剩约 **$13.5\%$** （ $e^{-2}=\dfrac{1}{7.389}\approx0.135$ ）；经过 **$5\tau$** 已充到约 **$99.3\%$** （ $1-e^{-5}=1-\dfrac{1}{148.4}\approx0.993$ ），可视为基本完成。
 
 > 例题：一个 $100\,\mu\mathrm{F}$ 电容与 $470\,\mathrm{k}\Omega$ 电阻串联，时间常数
 > $$
@@ -121,14 +121,14 @@ $$
 
 > 例题：一个由 **$400\,\Omega$ 电阻** 与 **$38\,\mathrm{pF}$ 电容** 串联、工作于 **$14\,\mathrm{MHz}$** 的电路：
 > $$
-> X_C=\dfrac{1}{2\pi f C}=\dfrac{1}{2\pi\times 14\times10^6\times 38\times10^{-12}}\approx 299\,\Omega
+> X_C=\dfrac{1}{2\pi f C}=\dfrac{1}{2\pi\times 14\times10^6\times 38\times10^{-12}}=\dfrac{1}{6.2832\times 532\times10^{-6}}\approx 299\,\Omega
 > $$
 > 故 $Z=400-j299$ ，落在复平面第四象限（电阻正、容抗负），对应阻抗坐标图（图 E5-1）中的 **第 4 点** 。
 > ![阻抗坐标图](02-circuit-calculation/E5-1.png)
 
 > 例题：一个由 **$300\,\Omega$ 电阻** 与 **$18\,\mu\mathrm{H}$ 电感** 串联、工作于 **$3.505\,\mathrm{MHz}$** 的电路：
 > $$
-> X_L=2\pi f L=2\pi\times 3.505\times10^6\times 18\times10^{-6}\approx 396\,\Omega
+> X_L=2\pi f L=6.2832\times 3.505\times10^6\times 18\times10^{-6}\approx 396\,\Omega
 > $$
 > 故 $Z=300+j396$ ，落在第一象限，对应图 E5-1 中的 **第 3 点** 。
 > ![阻抗坐标图](02-circuit-calculation/E5-1.png)
@@ -152,21 +152,21 @@ $$
 
 > 例题：串联电路中 $X_C=500\,\Omega$ 、 $R=1000\,\Omega$ 、 $X_L=250\,\Omega$ ，净电抗 $X_L-X_C=-250\,\Omega$ ，
 > $$
-> \varphi=\arctan\!\left(\dfrac{-250}{1000}\right)\approx -14.0\degree
+> \varphi=\arctan\!\left(\dfrac{-250}{1000}\right)=\arctan(-0.25)=-14.0\degree
 > $$
-> 负号表示 **电压滞后电流约 $14.0\degree$** 。
+> 负号表示 **电压滞后电流约 $14.0\degree$**（ $\arctan0.25=14.0^\circ$ ，见《计算特殊值速查》）。
 
 > 例题：串联电路中 $X_C=300\,\Omega$ 、 $R=100\,\Omega$ 、 $X_L=100\,\Omega$ ，净电抗 $-200\,\Omega$ ，
 > $$
-> \varphi=\arctan\!\left(\dfrac{-200}{100}\right)\approx -63\degree
+> \varphi=\arctan\!\left(\dfrac{-200}{100}\right)=\arctan(-2)=-63\degree
 > $$
-> 即 **电压滞后电流约 $63\degree$** 。
+> 即 **电压滞后电流约 $63\degree$**（ $\arctan2=90^\circ-\arctan0.5=90^\circ-26.6^\circ=63.4^\circ$ ）。
 
 > 例题：串联电路中 $X_C=25\,\Omega$ 、 $R=100\,\Omega$ 、 $X_L=75\,\Omega$ ，净电抗 $+50\,\Omega$ ，
 > $$
-> \varphi=\arctan\!\left(\dfrac{50}{100}\right)\approx 27\degree
+> \varphi=\arctan\!\left(\dfrac{50}{100}\right)=\arctan0.5=26.6^\circ\approx27\degree
 > $$
-> 即 **电压超前电流约 $27\degree$** 。
+> 即 **电压超前电流约 $27\degree$**（ $\arctan0.5=26.6^\circ$ ）。
 
 ## 谐振电路
 
@@ -203,12 +203,13 @@ $$
 > 例题：串联 RLC 电路 $R=22\,\Omega$ 、 $L=50\,\mu\mathrm{H}$ 、 $C=40\,\mathrm{pF}$ ，谐振频率
 > $$
 > f_0=\dfrac{1}{2\pi\sqrt{LC}}=\dfrac{1}{2\pi\sqrt{50\times10^{-6}\times 40\times10^{-12}}}
-> =\dfrac{1}{2\pi\sqrt{2\times10^{-15}}}\approx 3.56\,\mathrm{MHz}
+> =\dfrac{1}{2\pi\sqrt{2\times10^{-15}}}=\dfrac{1}{2\pi\times2\sqrt5\times10^{-8}}=\dfrac{1}{2\times3.1416\times2\times2.236\times10^{-8}}\approx 3.56\,\mathrm{MHz}
 > $$
 
 > 例题：串联 RLC 电路 $R=33\,\Omega$ 、 $L=50\,\mu\mathrm{H}$ 、 $C=10\,\mathrm{pF}$ ，
 > $$
 > f_0=\dfrac{1}{2\pi\sqrt{50\times10^{-6}\times 10\times10^{-12}}}
+> =\dfrac{1}{2\pi\sqrt{5\times10^{-16}}}=\dfrac{1}{2\times3.1416\times2.236\times10^{-8}}
 > \approx 7.12\,\mathrm{MHz}
 > $$
 
@@ -254,13 +255,13 @@ $$
 
 > 例题：在 $50\,\Omega$ 负载上峰峰值 $500\,\mathrm{V}$ ，则 $\mathrm{PEP}=\dfrac{500^2}{8\times50}=625\,\mathrm{W}$ 。
 
-> 例题：正弦波有效值 $120\,\mathrm{V}$ ，峰峰值 $V_{\mathrm{pp}}=2\sqrt{2}\,V_{\mathrm{rms}}=2\sqrt{2}\times120\approx 339.4\,\mathrm{V}$ 。
+> 例题：正弦波有效值 $120\,\mathrm{V}$ ，峰峰值 $V_{\mathrm{pp}}=2\sqrt{2}\,V_{\mathrm{rms}}=2\times1.414\times120\approx 339.4\,\mathrm{V}$ 。
 
 > 例题：正弦波峰值 $17\,\mathrm{V}$ ，有效值 $V_{\mathrm{rms}}=\dfrac{17}{\sqrt{2}}\approx 12.0\,\mathrm{V}$ 。
 
 未调制载波的 PEP 与平均功率之比等于 **$1.00$** （二者相同）。
 
-> 例题：$50\,\Omega$ 假负载耗散平均功率 $1200\,\mathrm{W}$ ，其两端有效值电压 $V_{\mathrm{rms}}=\sqrt{PR}=\sqrt{1200\times 50}\approx 245\,\mathrm{V}$ 。
+> 例题：$50\,\Omega$ 假负载耗散平均功率 $1200\,\mathrm{W}$ ，其两端有效值电压 $V_{\mathrm{rms}}=\sqrt{PR}=\sqrt{1200\times 50}=\sqrt{60000}=100\sqrt6=100\sqrt2\sqrt3=100\times1.414\times1.732\approx 245\,\mathrm{V}$ 。
 
 ## 串并联元件与变压器计算
 
@@ -274,7 +275,7 @@ $$
 
 > 例题：把天线 $600\,\Omega$ 馈点阻抗匹配到 $50\,\Omega$ 同轴电缆，所需匝数比
 > $$
-> \dfrac{N_1}{N_2}=\sqrt{\dfrac{600}{50}}=\sqrt{12}\approx 3.5:1
+> \dfrac{N_1}{N_2}=\sqrt{\dfrac{600}{50}}=\sqrt{12}=2\sqrt3=2\times1.732=3.46\approx 3.5:1
 > $$
 
 > 例题：两只 $5.0\,\mathrm{nF}$ 电容与一只 $750\,\mathrm{pF}$ 电容并联：总电容 $=10\,\mathrm{nF}+0.75\,\mathrm{nF}=10.75\,\mathrm{nF}$ 。

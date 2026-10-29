@@ -45,6 +45,7 @@ export default defineConfig({
 					label: '操作证考试知识点',
 					collapsed: true,
 					items: [
+						{ label: '计算特殊值速查', link: '/exam/00-calculation-reference/' },
 						{ label: '无线电管理法规', collapsed: true, items: [{ autogenerate: { directory: 'exam/01-radio-regulation' } }] },
 						{ label: '操作基础', collapsed: true, items: [{ autogenerate: { directory: 'exam/02-operation' } }] },
 						{ label: '收发信机与天线', collapsed: true, items: [{ autogenerate: { directory: 'exam/03-transceiver-antenna' } }] },

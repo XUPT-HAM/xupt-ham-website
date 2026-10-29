@@ -76,7 +76,7 @@ $$
 >   P = \dfrac{U^2}{R} = \dfrac{13.8^2}{1} \approx 190\,\mathrm{W}
 > $$
 
-> 例题：$5\,\mathrm{W} = 10\log_{10}(5000) \approx 37\,\mathrm{dBm}$ ； $0.25\,\mathrm{W} = 10\log_{10}(250000) \approx 54\,\mathrm{dB}\mu\mathrm{W}$ （也等于 $24\,\mathrm{dBm}$ ）； $0.4\,\mathrm{kW} = 10\log_{10}(4\times10^8) \approx 86\,\mathrm{dB}\mu\mathrm{W}$ 。
+> 例题：$5\,\mathrm{W} = 10\log_{10}(5000) = 10\times\left(\dfrac{\ln5}{\ln2+\ln5}+3\right)=10\times\left(\dfrac{1.6094}{2.3025}+3\right)\approx 37\,\mathrm{dBm}$ ； $0.25\,\mathrm{W} = 10\log_{10}(250000) = 10\times\left(\dfrac{\ln5-\ln2}{\ln2+\ln5}+5\right)\approx 54\,\mathrm{dB}\mu\mathrm{W}$ （也等于 $24\,\mathrm{dBm}$ ）； $0.4\,\mathrm{kW} = 10\log_{10}(4\times10^8) = 10\times\left(\dfrac{2\ln2}{\ln2+\ln5}+8\right)\approx 86\,\mathrm{dB}\mu\mathrm{W}$ 。
 
 ## 任意两功率水平之间的分贝比
 
@@ -92,7 +92,7 @@ $$
 - 功率 **变为 $4$ 倍** $\approx$ **$+6\,\mathrm{dB}$** ； **变为 $\dfrac{1}{4}$** $\approx$ **$-6\,\mathrm{dB}$** ；
 - 功率 **变为 $10$ 倍** $\approx$ **$+10\,\mathrm{dB}$** ； **变为 $\dfrac{1}{10}$** $\approx$ **$-10\,\mathrm{dB}$** 。
 
-反过来，若已知损耗为 **$1\,\mathrm{dB}$** ，对应的功率损失比例约为 **$20.6\%$** ，因为 $1-10^{-0.1}\approx 0.206$ ；也就是说剩下约 $79.4\%$ 的功率。
+反过来，若已知损耗为 **$1\,\mathrm{dB}$** ，对应的功率损失比例约为 **$20.6\%$** ，因为 $1-10^{-0.1}=1-\dfrac{1}{10^{0.1}}=1-\dfrac{1}{\sqrt[10]{2}\,\sqrt[10]{5}}=1-\dfrac{1}{1.0718\times1.1746}\approx 0.206$ ；也就是说剩下约 $79.4\%$ 的功率。
 
 > 例题：一部电台输出从 $5\,\mathrm{W}$ 提升到 $10\,\mathrm{W}$ ，功率恰好翻倍，故增量约为 **$+3\,\mathrm{dB}$** 。
 > 输出从 $12\,\mathrm{W}$ 降到 $3\,\mathrm{W}$ ，变为原来的 $\dfrac{1}{4}$ ，增量约为 **$-6\,\mathrm{dB}$** 。

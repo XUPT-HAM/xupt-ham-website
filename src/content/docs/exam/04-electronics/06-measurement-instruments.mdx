@@ -6,7 +6,7 @@ description: 介绍万用表、示波器、频率计等测量仪表的使用与�
 
 用 **万用表直流电压档** 测量正负对称的方波（占空比 $1:1$ ），读数为 **零值** ——因为波形正负面积相等，平均直流分量为零。若改用磁电式 **交流电压档** 测量同一对称方波，指针读数会 **大于该电压的峰值** ：交流档内部按正弦波的有效值刻度，而方波的有效值（等于其峰值）按正弦换算关系读出时会偏大。若直流档测量的是最小值为 $0$ 、占空比 $1:1$ 的方波（只有正向脉冲），读数则是该电压 **峰值的一半** ，即其平均直流分量。
 
-用 **电阻档** 测量电路时，若开始指示阻值很小、随时间延长阻值越来越大，说明电路两端可能存在一个 **很大的电容** ：表内电池在对电容充电，初始充电电流大、等效电阻小，随着电荷充满电流减小、读数上升。若测一个元件时表笔第一次连接表针挥动一下很快回到零位、断开重连却毫无指示，则该元件很可能是一支 **电解电容器** （充电瞬间有电流冲击，稳态则近似开路）。检查电解电容器好坏可用 **指针式万用表的电阻档** （观察充放电挥动）或 **数字万用表的电容测试档** 。
+用 **电阻档** 测量电路时，若开始指示阻值很小、随时间延长阻值越来越大，说明电路两端可能存在一个 **很大的电容** ：表内电池在对电容充电，初始充电电流大、等效电阻小，随着电荷充满电流减小、读数上升。若测一个元件时表笔第一次连接表针挥动一下很快回到零位、断开重连却毫无指示，则该元件很可能是一支 **电解电容器** （充电瞬间有电流冲击，稳态则近似开路）。检查电解电容器好坏可用 **指针式万用表的电阻档** （观察充放电挥动）或 **数字万用表的电容测试档** 。若用电阻档在不同量程（如 $R\times1$ 、 $R\times10$ 、 $R\times100$ ）测量同一个元件，读数随量程明显不同，则该元件很可能是 **非线性元件**（如二极管）——它的等效电阻随测试电流变化，并非定值电阻。
 
 指针式电压档有一个 **“欧姆/伏”（每伏欧姆）** 指标，数值越大说明测量电压时电表对电路工作状态的影响越小——因为这意味着电表内阻高、从被测电路分流少。 **数字万用表直流电压档** 测量两点间一个等幅音频信号时若读数不为零，且交换两支表笔后读数极性反转，则表明该音频信号上 **叠加有直流成分** （纯交流成分交换表笔读数极性应不变、仅数值相同）。
 
@@ -54,6 +54,8 @@ $$
 
 即 $0\,\mathrm{dBm}=30\,\mathrm{dB\mu}=-30\,\mathrm{dBW}$ 。
 
+> 例题：把瓦（W）折算成绝对功率电平，公式为 $P(\mathrm{dBm})=10\log_{10}\left(\dfrac{P}{1\,\mathrm{mW}}\right)$ 、 $P(\mathrm{dB\mu})=10\log_{10}\left(\dfrac{P}{1\,\mu\mathrm{W}}\right)$ 。例如 $5\,\mathrm{W}=5000\,\mathrm{mW}$ 对应 $10\log_{10}5000=10\times\left(\dfrac{\ln5}{\ln2+\ln5}+3\right)=10\times\left(\dfrac{1.6094}{2.3025}+3\right)\approx 37\,\mathrm{dBm}$ ； $0.25\,\mathrm{W}=250000\,\mu\mathrm{W}$ 对应 $10\log_{10}250000=10\times\left(\dfrac{\ln5-\ln2}{\ln2+\ln5}+5\right)\approx 54\,\mathrm{dB\mu}$ ； $0.4\,\mathrm{kW}=4\times10^{8}\,\mu\mathrm{W}$ 对应 $10\log_{10}\left(4\times10^{8}\right)=10\times\left(\dfrac{2\ln2}{\ln2+\ln5}+8\right)\approx 86\,\mathrm{dB\mu}$ 。
+
 当信号依次通过增益分别为 $x\,\mathrm{dB}$ 、 $y\,\mathrm{dB}$ 、 $z\,\mathrm{dB}$ 的电路时， **总增益为 $(x+y+z)\,\mathrm{dB}$** ，对应的功率倍数为 $10^{\dfrac{x+y+z}{10}}$ 。若增益为 $x\,\mathrm{dB}$ 的信号经二等分功率分配器分成两路，则每路功率减半，对应衰减 $3\,\mathrm{dB}$，每路增益变为 $(x-3)\,\mathrm{dB}$ ，倍数为 $10^{\dfrac{x-3}{10}}$ 。
 
 下面是几个典型计算示例。
@@ -94,15 +96,15 @@ $S_{21}$ 表示信号从端口 1 传到端口 2 的情况，即 **前向增益�
 
 > 例题：若电路输出功率是输入功率的 $100$ 万倍，增益为 $10\log_{10}\left(10^6\right)=60\,\mathrm{dB}$ 。输出功率是输入功率的 $5$ 倍时，增益约为 $10\log_{10}5\approx 7\,\mathrm{dB}$ 。输入功率是输出功率的一半，即输出为输入的 $\dfrac{1}{2}$ ，增益为 $-3\,\mathrm{dB}$ 。输出电压是输入电压的 $100$ 倍，电压增益为 $20\log_{10}100=40\,\mathrm{dB}$ ；若是 $1$ 万倍，则为 $80\,\mathrm{dB}$ ；若是 $10$ 倍，则为 $20\,\mathrm{dB}$ 。输入电压是输出的一半，电压增益为 $20\log_{10}\left(\dfrac{1}{2}\right)\approx -6\,\mathrm{dB}$ 。输出电压为输入的 $\dfrac{1}{100}$ 时，电压增益为 $-40\,\mathrm{dB}$ ；为 $\dfrac{1}{10}$ 时，电压增益约为 $-20\,\mathrm{dB}$ 。
 
-> 例题：接收机的 **S 表** 通常按 $1$ ~ $9$ 分度，相邻分度差 $6\,\mathrm{dB}$ 。若某电台以 $15\,\mathrm{W}$ 发射时读数为 $S_9$，功率降为 $S_4$ 时降低了 $5$ 个分度，即 $5\times6=30\,\mathrm{dB}$ 。 $15\,\mathrm{W}=10\log_{10}15\approx 11.8\,\mathrm{dBW}$ ，降低 $30\,\mathrm{dB}$ 后为 $-18.2\,\mathrm{dBW}$ ；换算成功率约为 $10^{-\dfrac{18.2}{10}}\,\mathrm{W}\approx 15\,\mathrm{mW}$ 。
+> 例题：接收机的 **S 表** 通常按 $1$ ~ $9$ 分度，相邻分度差 $6\,\mathrm{dB}$ 。若某电台以 $15\,\mathrm{W}$ 发射时读数为 $S_9$，功率降为 $S_4$ 时降低了 $5$ 个分度，即 $5\times6=30\,\mathrm{dB}$ 。 $15\,\mathrm{W}=10\log_{10}15=10\times\left(\dfrac{\ln3-\ln2}{\ln2+\ln5}+1\right)\approx 11.8\,\mathrm{dBW}$ ，降低 $30\,\mathrm{dB}$ 后为 $-18.2\,\mathrm{dBW}$ ；换算成功率约为 $10^{-\dfrac{18.2}{10}}\,\mathrm{W}\approx 15\,\mathrm{mW}$ 。
 
-> 例题：若 $100\,\mathrm{W}$ 对应 $S_8$ ，读数降到 $S_5$ 时降低了 $3$ 个分度，即 $18\,\mathrm{dB}$ 。$100\,\mathrm{W}=20\,\mathrm{dBW}$ ，降低 $18\,\mathrm{dB}$ 后为 $2\,\mathrm{dBW}$ ；对应功率约为 $10^{\dfrac{2}{10}}\,\mathrm{W}\approx 1.58\,\mathrm{W}$ 。
+> 例题：若 $100\,\mathrm{W}$ 对应 $S_8$ ，读数降到 $S_5$ 时降低了 $3$ 个分度，即 $18\,\mathrm{dB}$ 。$100\,\mathrm{W}=20\,\mathrm{dBW}$ ，降低 $18\,\mathrm{dB}$ 后为 $2\,\mathrm{dBW}$ ；对应功率约为 $10^{\dfrac{2}{10}}\,\mathrm{W}=10^{0.2}\,\mathrm{W}=\left(\sqrt[10]{2}\,\sqrt[10]{5}\right)^2\,\mathrm{W}=\left(1.0718\times1.1746\right)^2\,\mathrm{W}\approx 1.58\,\mathrm{W}$ 。
 
-> 例题：功率为 $0\,\mathrm{dBm}$ 的信号通过增益 $23\,\mathrm{dB}$ 的电路，输出功率为 $0+23=23\,\mathrm{dBm}$ ，即 $10^{\dfrac{23}{10}}\,\mathrm{mW}\approx 200\,\mathrm{mW}$ ，也等于 $23-30=-7\,\mathrm{dBW}$ 。
+> 例题：功率为 $0\,\mathrm{dBm}$ 的信号通过增益 $23\,\mathrm{dB}$ 的电路，输出功率为 $0+23=23\,\mathrm{dBm}$ ，即 $10^{\dfrac{23}{10}}\,\mathrm{mW}=10^2\times10^{0.3}\,\mathrm{mW}\approx 100\times2=200\,\mathrm{mW}$ ，也等于 $23-30=-7\,\mathrm{dBW}$ 。
 
-> 例题：功率为 $0\,\mathrm{dB\mu}$ 的信号通过增益 $36\,\mathrm{dB}$ 的电路，由于 $0\,\mathrm{dB}\mu=-30\,\mathrm{dBm}$ ，输出为 $6\,\mathrm{dBm}$，即 $10^{\dfrac{6}{10}}\,\mathrm{mW}\approx 4\,\mathrm{mW}$ ，也等于 $6-30=-24\,\mathrm{dBW}$ 。 $447\,\mathrm{mV}$ 是电压值，不是功率单位，不能作为输出功率。
+> 例题：功率为 $0\,\mathrm{dB\mu}$ 的信号通过增益 $36\,\mathrm{dB}$ 的电路，由于 $0\,\mathrm{dB}\mu=-30\,\mathrm{dBm}$ ，输出为 $6\,\mathrm{dBm}$，即 $10^{\dfrac{6}{10}}\,\mathrm{mW}=10^{0.6}\,\mathrm{mW}\approx 4\,\mathrm{mW}$ ，也等于 $6-30=-24\,\mathrm{dBW}$ 。 $447\,\mathrm{mV}$ 是电压值，不是功率单位，不能作为输出功率。
 
-> 例题：功率为 $0\,\mathrm{dBW}$ 的信号通过 $-36\,\mathrm{dB}$ 的衰减器，输出功率为 $0-36=-36\,\mathrm{dBW}$ ，即 $-6\,\mathrm{dBm}$ ，对应 $10^{-\dfrac{6}{10}}\,\mathrm{mW}\approx 0.25\,\mathrm{mW}$；换算成 $\mathrm{dB\mu}$ 为 $-36+60=24\,\mathrm{dB\mu}$ 。
+> 例题：功率为 $0\,\mathrm{dBW}$ 的信号通过 $-36\,\mathrm{dB}$ 的衰减器，输出功率为 $0-36=-36\,\mathrm{dBW}$ ，即 $-6\,\mathrm{dBm}$ ，对应 $10^{-\dfrac{6}{10}}\,\mathrm{mW}=\dfrac{1}{10^{0.6}}\,\mathrm{mW}\approx 0.25\,\mathrm{mW}$；换算成 $\mathrm{dB\mu}$ 为 $-36+60=24\,\mathrm{dB\mu}$ 。
 
 > 例题：功率为 $-133\,\mathrm{dBm}$ 的信号通过 $60\,\mathrm{dB}$ 放大器，输出功率为 $-73\,\mathrm{dBm}$ 。换算： $-73\,\mathrm{dBm}=-73+30=-43\,\mathrm{dB}\mu$，$-73\,\mathrm{dBm}=-73-30=-103\,\mathrm{dBW}$ 。$50\,\mathrm{\mu V}$ 是电压，不是功率单位，因此不作为“输出功率”的表述。
 
