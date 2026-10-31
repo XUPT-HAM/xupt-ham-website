@@ -44,7 +44,7 @@ $$
     G = 20\log_{10}\left(\dfrac{V_{\mathrm{out}}}{V_{\mathrm{in}}}\right)\,\mathrm{dB}
 $$
 
-记住几组常用数值：功率比 $100$ 倍对应 $20\,\mathrm{dB}$ ， $1{,}000{,}000$ 倍对应 $60\,\mathrm{dB}$ ；电压比 $100$ 倍对应 $40\,\mathrm{dB}$ ， $10{,}000$ 倍对应 $80\,\mathrm{dB}$ ， $10$ 倍对应 $20\,\mathrm{dB}$ 。比值为 $5$ 时功率增益约为 $10\log_{10}5\approx 7\,\mathrm{dB}$ ；功率减半对应 $-3\,\mathrm{dB}$ ；电压减半对应 $-6\,\mathrm{dB}$ 。当输出小于输入时，分贝值为负，表示衰减。
+记住几组常用数值：比值为 $5$ 时功率增益约为 $10\log_{10}5\approx 7\,\mathrm{dB}$ ；功率减半对应 $-3\,\mathrm{dB}$ ；电压减半对应 $-6\,\mathrm{dB}$ 。当输出小于输入时，分贝值为负，表示衰减。
 
 增益也常以绝对功率单位表示：**$\mathrm{dBm}$** 以 $1\,\mathrm{mW}$ 为参考， **$\mathrm{dBW}$** 以 $1\,\mathrm{W}$ 为参考， **$\mathrm{dB\mu}$** 以 $1\,\mu\mathrm{W}$ 为参考。它们的关系是：
 
@@ -57,8 +57,6 @@ $$
 > 例题：把瓦（W）折算成绝对功率电平，公式为 $P(\mathrm{dBm})=10\log_{10}\left(\dfrac{P}{1\,\mathrm{mW}}\right)$ 、 $P(\mathrm{dB\mu})=10\log_{10}\left(\dfrac{P}{1\,\mu\mathrm{W}}\right)$ 。例如 $5\,\mathrm{W}=5000\,\mathrm{mW}$ 对应 $10\log_{10}5000=10\times\left(\dfrac{\ln5}{\ln2+\ln5}+3\right)=10\times\left(\dfrac{1.6094}{2.3025}+3\right)\approx 37\,\mathrm{dBm}$ ； $0.25\,\mathrm{W}=250000\,\mu\mathrm{W}$ 对应 $10\log_{10}250000=10\times\left(\dfrac{\ln5-\ln2}{\ln2+\ln5}+5\right)\approx 54\,\mathrm{dB\mu}$ ； $0.4\,\mathrm{kW}=4\times10^{8}\,\mu\mathrm{W}$ 对应 $10\log_{10}\left(4\times10^{8}\right)=10\times\left(\dfrac{2\ln2}{\ln2+\ln5}+8\right)\approx 86\,\mathrm{dB\mu}$ 。
 
 当信号依次通过增益分别为 $x\,\mathrm{dB}$ 、 $y\,\mathrm{dB}$ 、 $z\,\mathrm{dB}$ 的电路时， **总增益为 $(x+y+z)\,\mathrm{dB}$** ，对应的功率倍数为 $10^{\dfrac{x+y+z}{10}}$ 。若增益为 $x\,\mathrm{dB}$ 的信号经二等分功率分配器分成两路，则每路功率减半，对应衰减 $3\,\mathrm{dB}$，每路增益变为 $(x-3)\,\mathrm{dB}$ ，倍数为 $10^{\dfrac{x-3}{10}}$ 。
-
-下面是几个典型计算示例。
 
 ## 示波器、频谱仪与高级测量
 
@@ -92,11 +90,11 @@ $S_{21}$ 表示信号从端口 1 传到端口 2 的情况，即 **前向增益�
 > P_{\mathrm{abs}}=P_{\mathrm{fwd}}-P_{\mathrm{refl}}=100-25=75\,\mathrm{W}
 > $$
 
-某放大器增益为 $20\,\mathrm{dB}$ ，意味着输出功率是输入功率的 $100$ 倍。放大器只是把电源能量按输入信号的规律“搬运”到负载，并非凭空产生能量，因此说“把相当于输入信号的 $100$ 倍的能量从电源转移到负载”是正确的物理描述。
+某放大器增益为 $20\,\mathrm{dB}$ ，意味着输出功率是输入功率的 $100$ 倍。放大器只是把电源能量按输入信号的规律“搬运”到负载，并非凭空产生能量，因此说“把相当于输入信号的 $100$ 倍的能量从电源转移到负载”是正确的物理描述。“损失”的能量并没有消失，也没有返回信号源，而是被电路转化为其他形式——例如变成热能耗散、或以无线电波形式辐射到空间。
 
 > 例题：若电路输出功率是输入功率的 $100$ 万倍，增益为 $10\log_{10}\left(10^6\right)=60\,\mathrm{dB}$ 。输出功率是输入功率的 $5$ 倍时，增益约为 $10\log_{10}5\approx 7\,\mathrm{dB}$ 。输入功率是输出功率的一半，即输出为输入的 $\dfrac{1}{2}$ ，增益为 $-3\,\mathrm{dB}$ 。输出电压是输入电压的 $100$ 倍，电压增益为 $20\log_{10}100=40\,\mathrm{dB}$ ；若是 $1$ 万倍，则为 $80\,\mathrm{dB}$ ；若是 $10$ 倍，则为 $20\,\mathrm{dB}$ 。输入电压是输出的一半，电压增益为 $20\log_{10}\left(\dfrac{1}{2}\right)\approx -6\,\mathrm{dB}$ 。输出电压为输入的 $\dfrac{1}{100}$ 时，电压增益为 $-40\,\mathrm{dB}$ ；为 $\dfrac{1}{10}$ 时，电压增益约为 $-20\,\mathrm{dB}$ 。
 
-> 例题：接收机的 **S 表** 通常按 $1$ ~ $9$ 分度，相邻分度差 $6\,\mathrm{dB}$ 。若某电台以 $15\,\mathrm{W}$ 发射时读数为 $S_9$，功率降为 $S_4$ 时降低了 $5$ 个分度，即 $5\times6=30\,\mathrm{dB}$ 。 $15\,\mathrm{W}=10\log_{10}15=10\times\left(\dfrac{\ln3-\ln2}{\ln2+\ln5}+1\right)\approx 11.8\,\mathrm{dBW}$ ，降低 $30\,\mathrm{dB}$ 后为 $-18.2\,\mathrm{dBW}$ ；换算成功率约为 $10^{-\dfrac{18.2}{10}}\,\mathrm{W}\approx 15\,\mathrm{mW}$ 。
+> 例题：接收机的 **S 表** 通常按 $1$ ~ $9$ 分度，相邻分度差 $6\,\mathrm{dB}$ 。若某电台以 $15\,\mathrm{W}$ 发射时读数为 $S_9$，功率降为 $S_4$ 时降低了 $5$ 个分度，即 $5\times6=30\,\mathrm{dB}$ 。 $15\,\mathrm{W}=10\log_{10}15=10\times\left(\dfrac{\ln3-\ln2}{\ln2+\ln5}+1\right)\approx 11.8\,\mathrm{dBW}$ ，降低 $30\,\mathrm{dB}$ 后为 $-18.2\,\mathrm{dBW}$ ；换算成功率： $10^{-\dfrac{18.2}{10}}\,\mathrm{W}=10^{-1.82}\,\mathrm{W}=10^{-2}\cdot10^{0.18}\,\mathrm{W}\approx0.01\times1.51=0.0151\,\mathrm{W}\approx15\,\mathrm{mW}$ 。
 
 > 例题：若 $100\,\mathrm{W}$ 对应 $S_8$ ，读数降到 $S_5$ 时降低了 $3$ 个分度，即 $18\,\mathrm{dB}$ 。$100\,\mathrm{W}=20\,\mathrm{dBW}$ ，降低 $18\,\mathrm{dB}$ 后为 $2\,\mathrm{dBW}$ ；对应功率约为 $10^{\dfrac{2}{10}}\,\mathrm{W}=10^{0.2}\,\mathrm{W}=\left(\sqrt[10]{2}\,\sqrt[10]{5}\right)^2\,\mathrm{W}=\left(1.0718\times1.1746\right)^2\,\mathrm{W}\approx 1.58\,\mathrm{W}$ 。
 
@@ -141,7 +139,7 @@ $$
 
 > 例题：一只表头满偏电流 $40\,\mu\mathrm{A}$ 、内阻 $96\,\Omega$ ，想改成 $0\sim1\,\mathrm{mA}$ 电流表。并联分流电阻 $R_s$ 后表头仍走 $40\,\mu\mathrm{A}$ ，其余电流走 $R_s$ ，且两者两端电压相等：
 > $$
-> I_g R_g = (I - I_g)R_s \;\Rightarrow\; 40\times10^{-6}\times96 = (10^{-3}-40\times10^{-6})R_s
+> I_g R_g = (I - I_g)R_s \;\Rightarrow\; 40\times10^{-6}\times96 = \left(10^{-3}-40\times10^{-6}\right)R_s
 > $$
 > $$
 > R_s = \dfrac{40\times10^{-6}\times96}{0.00096} \approx 4\,\Omega
@@ -157,4 +155,4 @@ $$
 > \dfrac{750}{150}\times150\,\mathrm{k}\Omega - 150\,\mathrm{k}\Omega = 5\times150\,\mathrm{k}\Omega - 150\,\mathrm{k}\Omega = 600\,\mathrm{k}\Omega
 > $$
 
-电压表的 **灵敏度** 常以 **$\Omega/\mathrm{V}$** 表示，等于表头满偏电流的倒数 $1/I_g$ ；灵敏度为 $20\,\mathrm{k}\Omega/\mathrm{V}$ 的电压表，其满偏电流为 $1/(20\times10^3)=50\,\mu\mathrm{A}$ 。把电压表切到更高量程，本质上就是在表头 **串联更大的倍率电阻** 。
+电压表的 **灵敏度** 常以 **$\Omega/\mathrm{V}$** 表示，等于表头满偏电流的倒数 $\dfrac{1}{I_g}$ ；灵敏度为 $20\,\mathrm{k}\Omega/\mathrm{V}$ 的电压表，其满偏电流为 $\dfrac{1}{20\times10^3}=50\,\mathrm{\mu A}$ 。把电压表切到更高量程，本质上就是在表头 **串联更大的倍率电阻** 。

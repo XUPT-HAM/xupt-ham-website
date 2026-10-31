@@ -33,11 +33,20 @@ description: 讲解 DX（远程）通信技巧、竞赛（Contest）规则与记
 > \theta=\operatorname{atan2}\big(\sin\Delta\lambda\cos\varphi_2,\ \cos\varphi_1\sin\varphi_2-\sin\varphi_1\cos\varphi_2\cos\Delta\lambda\big)
 > $$
 >
-> 其中 $\theta$ 是从正北顺时针计的方位角，$\operatorname{atan2}$ 的结果落在 $-180\degree\sim180\degree$ ，负值时加 $360\degree$ 转正。手算 $\operatorname{atan2}(y,x)$ 时先查 $\arctan\left|\dfrac{y}{x}\right|$，再按 $x$、$y$ 符号定象限：$x>0$ 取 $\pm r$、$x<0$ 取 $180^\circ\mp r$、$x=0$ 取 $\pm90^\circ$。例如北京取 $39.9\degree\mathrm{N},\ 116.4\degree\mathrm{E}$ 、东欧取 $50\degree\mathrm{N},\ 25\degree\mathrm{E}$ ，代入得欧洲→北京约 $60.9\degree$（即上文"约 60°"），北京→欧洲约 $312.9\degree$（西北偏北，与"约 300°"同向）。
+> 其中 $\theta$ 是从正北顺时针计的方位角，$\operatorname{atan2}$ 的结果落在 $-180\degree\sim180\degree$ ，负值时加 $360\degree$ 转正。手算 $\operatorname{atan2}(y,x)$ 时先查 $\sin$、$\cos$ 算出 $y$、$x$，再取 $r=\arctan\left|\dfrac{y}{x}\right|$，按 $x$、$y$ 符号定象限：$x>0$ 取 $\pm r$、$x<0$ 取 $180^\circ\mp r$、$x=0$ 取 $\pm90^\circ$ 。
+>
+> 以北京（ $39.9\degree\mathrm{N},\ 116.4\degree\mathrm{E}$ ）到东欧（ $50\degree\mathrm{N},\ 25\degree\mathrm{E}$ ）为例，$\Delta\lambda=25-116.4=-91.4^\circ$：
+> $y=\sin(-91.4^\circ)\cos50^\circ=-\sin91.4^\circ\cos50^\circ=-\cos1.4^\circ\cos50^\circ=-0.9997\times0.6428=-0.6426$；
+> $x=\cos39.9^\circ\sin50^\circ-\sin39.9^\circ\cos50^\circ\cos(-91.4^\circ)=0.7672\times0.7660-0.6414\times0.6428\times(-\sin1.4^\circ)=0.5877+0.0101=0.5978$；
+> $r=\arctan\dfrac{0.6426}{0.5978}=\arctan1.075=47.1^\circ$，因 $x>0,\ y<0$ 取 $\theta=-47.1^\circ$，加 $360^\circ$ 得北京→欧洲 $312.9^\circ$ ，西北偏北，印证上文"约 300°"。
+> 反向（欧洲→北京）$\Delta\lambda=116.4-25=91.4^\circ$：$y=\sin91.4^\circ\cos39.9^\circ=\cos1.4^\circ\cos39.9^\circ=0.9997\times0.7672=0.7670$；$x=\cos50^\circ\sin39.9^\circ-\sin50^\circ\cos39.9^\circ\cos91.4^\circ=0.6428\times0.6414-0.7660\times0.7672\times(-\sin1.4^\circ)=0.4123+0.0143=0.4266$；$r=\arctan\dfrac{0.7670}{0.4266}=\arctan1.798=60.9^\circ$，因 $x>0,\ y>0$ 取 $\theta=60.9^\circ$ ，东北偏北，印证上文"约 60°"。
 
 天线的 **走向（轴向）** 与辐射方向的关系取决于天线形式。 **水平极化的半波长偶极天线** 在轴线方向辐射最弱（存在零点），在垂直于轴线的两侧（"侧射"方向）辐射最强。因此要把主瓣对准某一方位，应让偶极子轴线 **垂直于** 该方位。北京到纽约的最短路径从北京出发大致朝向北（经北极地区），所以联络纽约的偶极天线应取 **东西走向** ——其侧射方向正好指向北，即大圆航向所在。
 
-> 北京到纽约的初始方位角同样可用前述公式计算：北京取 $39.9\degree\mathrm{N},\ 116.4\degree\mathrm{E}$ 、纽约取 $40.7\degree\mathrm{N},\ 74\degree\mathrm{W}$ ，代入得 $\theta\approx8\degree$ ——几乎正北、经北极地区（这正是"最短路径过北极"的由来）。
+> 北京（ $39.9\degree\mathrm{N},\ 116.4\degree\mathrm{E}$ ）到纽约（ $40.7\degree\mathrm{N},\ 74\degree\mathrm{W}$ ），$\Delta\lambda=-74-116.4=-190.4^\circ$，由诱导公式 $\sin(-190.4^\circ)=\sin10.4^\circ$、$\cos(-190.4^\circ)=-\cos10.4^\circ$：
+> $y=\sin(-190.4^\circ)\cos40.7^\circ=0.1805\times0.7581=0.1368$；
+> $x=\cos39.9^\circ\sin40.7^\circ-\sin39.9^\circ\cos40.7^\circ\cos(-190.4^\circ)=0.7672\times0.6521-0.6414\times0.7581\times(-0.9836)=0.5003+0.4783=0.9786$；
+> $r=\arctan\dfrac{0.1368}{0.9786}=\arctan0.1398\approx\arctan0.140=8.0^\circ$，因 $x>0,\ y>0$ 取 $\theta=8.0^\circ\approx8^\circ$ ——几乎正北、经北极地区（这正是"最短路径过北极"的由来）。
 > 半波偶极天线在包含振子的平面内方向图呈"8"字形：**垂直于振子轴线** 的两侧（侧射方向）辐射最强，**振子轴线两端** 是零点。因此要把主瓣对准方位角 $\theta$ ，振子轴线应取 $\theta\pm90\degree$ 。对北京→纽约 $\theta\approx8\degree$ ，轴线取 $8\degree+90\degree=98\degree$ 或 $8\degree-90\degree=-82\degree$（即 $278\degree$ ），两个解都对应 **大致东西走向**——侧射方向恰好朝北，指向大圆航向。
 
 ## 竞赛操作与信号交换

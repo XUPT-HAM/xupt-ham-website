@@ -3,6 +3,7 @@ title: 电路计算
 description: 讲解串并联电路计算、欧姆定律与基尔霍夫定律在电路分析中的应用。
 ---
 
+import { Aside } from '@astrojs/starlight/components';
 
 已知电阻负载上的电压 $U$ 、电流 $I$ 、电阻 $R$ 、功率 $P$ ，它们之间的基本关系可相互导出：
 
@@ -18,11 +19,11 @@ $$
 
 把 $N$ 个相同电阻 **串联** 到原电源上（与每个单独接电源相比）：总阻值变为 $N$ 倍，每个电阻上的电流减到 $\dfrac{1}{N}$ ，电压减到 $\dfrac{1}{N}$ ，功率减到 $\dfrac{1}{N^2}$ 。把 $N$ 个相同电阻 **并联** ：每个电阻仍承受原电压、电流不变，每个功率不变，而总功率为单个的 $N$ 倍。
 
-若把电阻负载两端电压提高 $n\%$ ，则功率按平方关系变化：新功率为原来的 $\left[\dfrac{100+n}{100}\right]^2$ 倍；降低 $n\%$ 则为 $\left[\dfrac{100-n}{100}\right]^2$ 倍。
+若把电阻负载两端电压提高 $n\%$ ，则功率按平方关系变化：新功率为原来的 $\left(\dfrac{100+n}{100}\right)^2$ 倍；降低 $n\%$ 则为 $\left(\dfrac{100-n}{100}\right)^2$ 倍。
 
 ## 交流信号的有效值、平均值与发热
 
-衡量交流信号大小有两个常用指标： **有效值（Root Mean Square，RMS）** 是“能在同一电阻上产生相同热量的等效直流值”，即瞬时值平方的平均值再开方； **平均值** 通常指一个完整周期内波形的代数值平均，对于以零为中心对称的交变波形，其完整周期平均值为 **0** 。
+衡量交流信号大小有两个常用指标： **有效值（Root Mean Square，RMS）** 是“能在同一电阻上产生相同热量的等效直流值”，即瞬时值平方的平均值再开方； **平均值** 通常指一个完整周期内波形的代数值平均，对于以零为中心对称的交变波形，其完整周期平均值为 **$0$** 。
 
 对正弦波，峰值 $V_p$ 、峰峰值 $V_{\mathrm{pp}}=2V_p$ 、有效值三者关系为
 
@@ -30,15 +31,71 @@ $$
     V_{\mathrm{rms}} = \dfrac{V_p}{\sqrt{2}} = \dfrac{V_{\mathrm{pp}}}{2\sqrt{2}}
 $$
 
-> 例题：峰峰值为 $100\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{100}{2\sqrt{2}} = \dfrac{100}{2\times1.414} \approx 35.4\,\mathrm{V}$ ；峰值为 $100\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{100}{\sqrt{2}} = \dfrac{100}{1.414} \approx 70.7\,\mathrm{V}$ 。
+<Aside type="tip">
+    推导：有效值的定义为 $V_{\mathrm{rms}}=\sqrt{\displaystyle\dfrac{1}{T}\int_0^T v^2(t)\,\mathrm{d}t}$ 。对正弦 $v(t)=V_p\sin\omega t$ ，利用 $\sin^2\omega t=\dfrac{1-\cos2\omega t}{2}$ ，而 $\cos2\omega t$ 在整周期上积分为 $0$ ，于是
+    $$
+    \begin{aligned}
+        V_{\mathrm{rms}}^2 &= \dfrac{V_p^2}{T}\int_0^T \dfrac{1-\cos2\omega t}{2}\,\mathrm{d}t
+        = \dfrac{V_p^2}{2}\left(1-\dfrac{1}{T}\int_0^T\cos2\omega t\,\mathrm{d}t\right)
+        = \dfrac{V_p^2}{2}
+    \end{aligned}
+    $$
+    开方即得 $V_{\mathrm{rms}}=\dfrac{V_p}{\sqrt2}$ 。
+</Aside>
 
-> 例题：峰峰值为 $340\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{340}{2\sqrt{2}} \approx 120\,\mathrm{V}$ ；峰值 $20\,\mathrm{V}$ （ $100\,\mathrm{Hz}$ ）的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{20}{\sqrt{2}} \approx 14.14\,\mathrm{V}$ 。
+> 例题（严格均方根）：峰峰值为 $100\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{100}{2\sqrt{2}} = \dfrac{100}{2\times1.414} \approx 35.4\,\mathrm{V}$ ；峰值为 $100\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{100}{\sqrt{2}} = \dfrac{100}{1.414} \approx 70.7\,\mathrm{V}$ 。
 
-对于方波与三角波，要注意 **有效值不等于平均值** ：一个在 $\pm A$ 之间摆动的对称方波，有效值就等于幅度 $A$ （平均值仍为 $0$ ）；一个从 $0$ 到 $2A$ 的单极性方波（ $50\%$ 占空比），其平均值是 $A$ 、有效值是 $A\sqrt{2}$ 。三角波的有效值更小，对称三角波（峰幅 $A$ ）有效值为 $\dfrac{A}{\sqrt{3}}$ 。
+> 例题（严格均方根）：峰峰值为 $340\,\mathrm{V}$ 的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{340}{2\sqrt{2}} \approx 120\,\mathrm{V}$ ；峰值 $20\,\mathrm{V}$ （ $100\,\mathrm{Hz}$ ）的正弦波，其有效值 $V_{\mathrm{rms}} = \dfrac{20}{\sqrt{2}} \approx 14.14\,\mathrm{V}$ 。
+
+> 例题（严格均方根）：最小值为 $-100\,\mathrm{V}$ 、平均值为 $0\,\mathrm{V}$ 的正弦波，其峰值为 $100\,\mathrm{V}$ ，有效值本为 $\dfrac{100}{\sqrt2}\approx70.7\,\mathrm{V}$ 。若将其负半周极性调转，得到脉动直流 $|v(t)|=100|\sin\omega t|$ ；因有效值是先对 $v^2$ 取平均再开方，调转极性并不改变 $v^2$ ，故有效值仍为 $70.7\,\mathrm{V}$ 。
+
+> 例题（严格均方根）：最大值为 $100\,\mathrm{V}$ 、平均值为 $0\,\mathrm{V}$ 的正弦波，峰值为 $100\,\mathrm{V}$ 。若将其正半周极性调转，得到负的脉动直流 $v(t)=-100|\sin\omega t|$ ，同样因 $v^2$ 不变，有效值仍为 $\dfrac{100}{\sqrt2}\approx70.7\,\mathrm{V}$ ；有效值恒为正，负号不影响结果。
+
+方波与三角波的“有效值”有两种常见算法，务必分清：
+- **严格均方根（真有效值）** ：按 $V_{\mathrm{rms}}=\sqrt{\displaystyle\dfrac{1}{T}\int_0^T v^2(t)\,\mathrm{d}t}$ 计算。对称方波（ $\pm A$ 间跳变）得 $V_{\mathrm{rms}}=A$ ；单极性方波（ $0$ 到 $2A$ 、 $50\%$ 占空比）得 $V_{\mathrm{rms}}=A\sqrt2$ ；三角波（峰幅 $A$ ）得 $V_{\mathrm{rms}}=\dfrac{A}{\sqrt3}$ 。
+- **整流平均值** ：按 $\displaystyle\overline{|v|}=\dfrac{1}{T}\int_0^T|v(t)|\,\mathrm{d}t$ 计算，即波形绝对值的算术平均（也是指针式电压表“有效值档”的常见定义）。对称方波得 $A$ ；单极性方波得 $A$ ；三角波得 $\dfrac{A}{2}$ 。
+
+<Aside type="caution">
+    考题约定：正弦波的有效值一律按 **严格均方根** （ $V_{\mathrm{rms}}=\dfrac{V_p}{\sqrt2}$ ）；方波、三角波的“有效值”题目按 **整流平均值** 计分。
+</Aside>
+
+<Aside type="tip">
+    推导（严格均方根）：由 $\displaystyle V_{\mathrm{rms}}^2=\dfrac{1}{T}\int_0^T v^2(t)\,\mathrm{d}t$ 。对称方波 $v^2(t)\equiv A^2$ ，故 $\displaystyle V_{\mathrm{rms}}^2=\dfrac{1}{T}\int_0^T A^2\,\mathrm{d}t=A^2$ ，即 $V_{\mathrm{rms}}=A$ 。单极性方波（ $0$ 到 $2A$ 、 $50\%$ 占空比）仅半周 $v=2A$ ，故 $\displaystyle V_{\mathrm{rms}}^2=\dfrac{1}{T}\int_0^{\dfrac{T}{2}}(2A)^2\mathrm{d}t=\dfrac{4A^2}{2}=2A^2$ ，即 $V_{\mathrm{rms}}=A\sqrt2$ 。三角波（峰幅 $A$ ）取上升段 $v(t)=\dfrac{4A}{T}t$ （ $0\leqslant t\leqslant\dfrac{T}{4}$ ），由对称性 $v^2$ 在四段重复：
+    $$
+        \begin{aligned}
+            V_{\mathrm{rms}}^2 &= \dfrac{4}{T}\int_0^{\dfrac{T}{4}}\left(\dfrac{4A}{T}t\right)^2\mathrm{d}t\\
+            &= \dfrac{64A^2}{T^3}\cdot\dfrac{\left(\dfrac{T}{4}\right)^3}{3}\\
+            &= \dfrac{64A^2}{T^3}\cdot\dfrac{T^3}{192}\\
+            &= \dfrac{A^2}{3}
+        \end{aligned}
+    $$
+    故严格均方根 $V_{\mathrm{rms}}=\dfrac{A}{\sqrt3}$ 。
+
+    推导（整流平均值，微积分）：由 $\displaystyle\overline{|v|}=\dfrac{1}{T}\int_0^T|v(t)|\,\mathrm{d}t$ 。对称方波 $|v(t)|\equiv A$ ，故 $\displaystyle\overline{|v|}=\dfrac{1}{T}\int_0^T A\,\mathrm{d}t=A$ ；单极性方波仅半周 $v=2A$ ，故 $\displaystyle\overline{|v|}=\dfrac{1}{T}\int_0^{\dfrac{T}{2}}2A\,\mathrm{d}t=\dfrac{2A}{2}=A$ 。三角波的整流平均值，以峰幅 $A$ 的对称三角波为例， $v(t)$ 在 $\left[0,\dfrac{T}{4}\right]$ 由 $0$ 线性升到 $A$ （ $v(t)=\dfrac{4A}{T}t$ ），由对称性 $|v|$ 在四段相同区段上重复，故
+    $$
+        \begin{aligned}
+            \overline{|v|} &= \dfrac{4}{T}\int_0^{\dfrac{T}{4}}\dfrac{4A}{T}t\,\mathrm{d}t\\
+            &= \dfrac{16A}{T^2}\cdot\dfrac{\left(\dfrac{T}{4}\right)^2}{2}\\
+            &= \dfrac{16A}{T^2}\cdot\dfrac{T^2}{32}\\
+            &= \dfrac{A}{2}
+        \end{aligned}
+    $$
+    故三角波（对称或单极性）按题库约定其“有效值”为 $\dfrac{A}{2}$ ，但严格均方根 $V_{\mathrm{rms}}=\dfrac{A}{\sqrt3}$ 。
+</Aside>
+
+> 例题（用整流平均值）：最小值为 $-50\,\mathrm{V}$ 、峰\-峰值 $100\,\mathrm{V}$ 的方波，即幅度 $\pm50\,\mathrm{V}$ 的对称方波，其整流平均值等于幅度 $50.0\,\mathrm{V}$ ；最小值为 $0\,\mathrm{V}$ 、峰\-峰值 $100\,\mathrm{V}$ 的方波，即 $0$ 到 $100\,\mathrm{V}$ 的单极性方波（ $50\%$ 占空比），整流平均值为 $50.0\,\mathrm{V}$ 。若按严格均方根，对称方波同为 $50.0\,\mathrm{V}$ ，单极性方波为 $50\sqrt2\approx70.7\,\mathrm{V}$ 。
+
+> 例题（用整流平均值）：最小值为 $-50\,\mathrm{V}$ 、峰\-峰值 $100\,\mathrm{V}$ 的三角波，峰幅 $A=50\,\mathrm{V}$ ，整流平均值取 $\dfrac{A}{2}=25.0\,\mathrm{V}$ ；最小值为 $0\,\mathrm{V}$ 、峰\-峰值 $100\,\mathrm{V}$ 的三角波，峰幅 $A=100\,\mathrm{V}$ ，整流平均值为 $\dfrac{A}{2}=50.0\,\mathrm{V}$ 。严格均方根为 $\dfrac{A}{\sqrt3}\approx28.9\,\mathrm{V}$ 或 $57.7\,\mathrm{V}$ 。
+
+> 例题（用平均值）：峰\-峰值为 $100\,\mathrm{V}$ 或峰值为 $100\,\mathrm{V}$ 的正弦波，因正负对称，一个完整周期内的平均值为 $0\,\mathrm{V}$ 。
+
+> 例题（用平均值）：最小值为 $-50\,\mathrm{V}$ 、峰\-峰值 $100\,\mathrm{V}$ 的方波，因正负对称，平均值为 $0\,\mathrm{V}$ ；最小值为 $0\,\mathrm{V}$ 、峰\-峰值 $100\,\mathrm{V}$ 的方波，平均值为其幅度之半 $50.0\,\mathrm{V}$ 。
+
+> 例题（用平均值）：最小值为 $-50\,\mathrm{V}$ 、峰\-峰值 $100\,\mathrm{V}$ 的三角波，因正负对称，平均值为 $0\,\mathrm{V}$ ；最小值为 $0\,\mathrm{V}$ 、峰\-峰值 $100\,\mathrm{V}$ 的三角波，平均值为 $50.0\,\mathrm{V}$ 。
 
 电阻发热只取决于加在其上的电压 **有效值** 的平方（ $P=\dfrac{U^2}{R}$ ），与波形形状无关，因此可以比较不同电源驱动同一电阻时的发热：
 
-> 例题：用 $120\,\mathrm{V}$ 蓄电池（直流）与 **峰值** $120\,\mathrm{V}$ 的交流变压器分别驱动相同电阻：交流的有效值只有 $\dfrac{120}{\sqrt{2}}\approx 84.9\,\mathrm{V}$ ，功率为蓄电池的 $\left(\dfrac{84.9}{120}\right)^2 = \dfrac{1}{2}$ ，故蓄电池驱动的电阻发热约为交流侧的 **$2$ 倍** 。
+> 例题：用 $120\,\mathrm{V}$ 蓄电池（直流）与 **峰值** $120\,\mathrm{V}$ 的交流变压器分别驱动相同电阻：交流的有效值只有 $\dfrac{120}{\sqrt{2}}\approx 84.9\,\mathrm{V}$ ，功率为蓄电池的 $\left(\dfrac{84.9}{120}\right)^2\approx\dfrac{1}{2}$ ，故蓄电池驱动的电阻发热约为交流侧的 **$2$ 倍** 。
 
 > 例题：改用 **有效值** $120\,\mathrm{V}$ 的交流变压器时，双方有效值相同，发热 **相同** 。
 
@@ -154,7 +211,7 @@ $$
 > $$
 > \varphi=\arctan\!\left(\dfrac{-250}{1000}\right)=\arctan(-0.25)=-14.0\degree
 > $$
-> 负号表示 **电压滞后电流约 $14.0\degree$**（ $\arctan0.25=14.0^\circ$ ，见《计算特殊值速查》）。
+> 负号表示 **电压滞后电流约 $14.0\degree$** 。
 
 > 例题：串联电路中 $X_C=300\,\Omega$ 、 $R=100\,\Omega$ 、 $X_L=100\,\Omega$ ，净电抗 $-200\,\Omega$ ，
 > $$
@@ -202,15 +259,23 @@ $$
 
 > 例题：串联 RLC 电路 $R=22\,\Omega$ 、 $L=50\,\mu\mathrm{H}$ 、 $C=40\,\mathrm{pF}$ ，谐振频率
 > $$
-> f_0=\dfrac{1}{2\pi\sqrt{LC}}=\dfrac{1}{2\pi\sqrt{50\times10^{-6}\times 40\times10^{-12}}}
-> =\dfrac{1}{2\pi\sqrt{2\times10^{-15}}}=\dfrac{1}{2\pi\times2\sqrt5\times10^{-8}}=\dfrac{1}{2\times3.1416\times2\times2.236\times10^{-8}}\approx 3.56\,\mathrm{MHz}
+> \begin{aligned}
+> LC &= 50\times10^{-6}\times 40\times10^{-12} = 2\times10^{-15} \\
+> f_0 &= \dfrac{1}{2\pi\sqrt{LC}} = \dfrac{1}{2\pi\sqrt{2\times10^{-15}}} \\
+>     &= \dfrac{1}{2\pi\times 2\sqrt5\times10^{-8}} \\
+>     &= \dfrac{1}{2\times3.1416\times2\times2.236\times10^{-8}} \\
+>     &\approx 3.56\,\mathrm{MHz}
+> \end{aligned}
 > $$
 
 > 例题：串联 RLC 电路 $R=33\,\Omega$ 、 $L=50\,\mu\mathrm{H}$ 、 $C=10\,\mathrm{pF}$ ，
 > $$
-> f_0=\dfrac{1}{2\pi\sqrt{50\times10^{-6}\times 10\times10^{-12}}}
-> =\dfrac{1}{2\pi\sqrt{5\times10^{-16}}}=\dfrac{1}{2\times3.1416\times2.236\times10^{-8}}
-> \approx 7.12\,\mathrm{MHz}
+> \begin{aligned}
+> LC &= 50\times10^{-6}\times 10\times10^{-12} = 5\times10^{-16} \\
+> f_0 &= \dfrac{1}{2\pi\sqrt{LC}} = \dfrac{1}{2\pi\sqrt{5\times10^{-16}}} \\
+>     &= \dfrac{1}{2\times3.1416\times2.236\times10^{-8}} \\
+>     &\approx 7.12\,\mathrm{MHz}
+> \end{aligned}
 > $$
 
 > 例题：谐振频率为 $7.1\,\mathrm{MHz}$ 、Q 值为 $150$ 的回路，半功率带宽
@@ -293,16 +358,6 @@ $$
 > 例题：$12\,\mathrm{VDC}$ 灯泡流过 $0.2\,\mathrm{A}$ ，功率 $P=UI=12\times 0.2=2.4\,\mathrm{W}$ 。
 
 > 例题：电流 $7.0\,\mathrm{mA}$ 流过 $1250\,\Omega$ 电阻，功率 $P=I^2R=(0.007)^2\times1250\approx 61\,\mathrm{mW}$ 。
-
-## 单位换算与欧姆定律速算例题
-
-下面的例题练习单位改写与欧姆定律速算（计量词头的含义见《电学基础》）；欧姆定律 $U=IR$ 、 $I=U/R$ 、 $P=UI$ 是速算基础。
-
-> 例题：$1.5\,\mathrm{A}=1500\,\mathrm{mA}$ ； $1\,500\,000\,\mathrm{Hz}=1500\,\mathrm{kHz}$ ； $1\,\mathrm{kV}=1000\,\mathrm{V}$ ； $1\,\mu\mathrm{V}=10^{-6}\,\mathrm{V}$ ； $500\,\mathrm{mW}=0.5\,\mathrm{W}$ ； $3000\,\mathrm{mA}=3\,\mathrm{A}$ ； $3.525\,\mathrm{MHz}=3525\,\mathrm{kHz}$ ； $1\,000\,000\,\mathrm{pF}=1\,\mu\mathrm{F}$ ； $28\,400\,\mathrm{kHz}=28.400\,\mathrm{MHz}$ ； $2425\,\mathrm{MHz}=2.425\,\mathrm{GHz}$ 。
-
-> 例题：$13.8\,\mathrm{V}$ 直流、电流 $10\,\mathrm{A}$ ，功率 $P=UI=13.8\times10=138\,\mathrm{W}$ ； $12\,\mathrm{V}$ 、 $2.5\,\mathrm{A}$ 为 $30\,\mathrm{W}$ ；要输出 $120\,\mathrm{W}$ 于 $12\,\mathrm{V}$ ，需电流 $I=P/U=\dfrac{120}{12}=10\,\mathrm{A}$ 。
-
-> 例题：电流 $3\,\mathrm{A}$ 接 $90\,\mathrm{V}$ ，电阻 $R=\dfrac{U}{I}=\dfrac{90}{3}=30\,\Omega$ ； $\dfrac{12\,\mathrm{V}}{1.5\,\mathrm{A}}=8\,\Omega$ ； $\dfrac{12\,\mathrm{V}}{4\,\mathrm{A}}=3\,\Omega$ ； $120\,\mathrm{V}$ 加 $80\,\Omega$ 得电流 $1.5\,\mathrm{A}$ ； $200\,\mathrm{V}$ 加 $100\,\Omega$ 得 $2\,\mathrm{A}$ ； $240\,\mathrm{V}$ 加 $24\,\Omega$ 得 $10\,\mathrm{A}$ ； $2\,\Omega$ 上流过 $0.5\,\mathrm{A}$ 电压为 $1\,\mathrm{V}$ ； $10\,\Omega$ 上 $1\,\mathrm{A}$ 为 $10\,\mathrm{V}$ 、 $2\,\mathrm{A}$ 为 $20\,\mathrm{V}$ 。
 
 ## 电长度
 
