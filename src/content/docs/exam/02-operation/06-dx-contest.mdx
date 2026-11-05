@@ -13,7 +13,7 @@ description: 讲解 DX（远程）通信技巧、竞赛（Contest）规则与记
 
 **DX Summit** 是爱好者上报"谁在哪个频率听到了谁"的 spotting（通报）系统，一条报文大致按"报告者、频率、被报告的 DX 台、备注、UTC 时间、日期"排列；其中 simplex 指单工（同频收发），报文末尾的数字如 2040、0052 均为协调世界时（UTC）。例如"PY2SS 28005.3 KH6/N6GQ simplex, fading signal in SA 2040 15 Feb 2012"表示巴西电台（PY2SS）在 $28005.3\,\mathrm{kHz}$ 收听夏威夷台（KH6/N6GQ），南美（SA）方向信号衰落，即"巴西电台收听夏威夷电台效果不好"；"JA2WS 14009.6 E51WWA Calling CQ, no takers, Cook Is 0052 14 Feb 2018"表示日本台（JA2WS，JA 字头）报告 E51WWA 在库克岛（Cook Is）呼叫 CQ 而无人应答。
 
-不同波段与活动有约定俗成的常用频率： **20 米波段的 SSTV 联络最常见于 $14.230\,\mathrm{MHz}$** ； **20 米波段的 IOTA（岛屿活动）常见于 SSB $14.260\,\mathrm{MHz}$ 、CW $14.040\,\mathrm{MHz}$**。IOTA 竞赛会主动避让某些与其他业务兼容紧张的区段，以保持频段秩序——其中 **80 米的 $3560$ ~ $3600\,\mathrm{kHz}$ 通常不用于 IOTA 竞赛**，而 $7040$ ~ $7060\,\mathrm{kHz}$、$14060$ ~ $14125\,\mathrm{kHz}$、$14300$ ~ $14350\,\mathrm{kHz}$ 等则是竞赛正常使用的区段。（80 米波段内 $3500$ ~ $3600\,\mathrm{kHz}$ 划给 CW/数字模式、$3600\,\mathrm{kHz}$ 以上划给 SSB 电话，故 $3560$ ~ $3600$ 本身属 CW/数字段，SSB 竞赛同样不会选用。）就传播规律而言， **10 米波段的 DX 通信最佳时段是白天** （主要依靠日间 F2 层反射）。
+不同波段与活动有约定俗成的常用频率： **20 米波段的 SSTV 联络最常见于 $14.230\,\mathrm{MHz}$** ； **20 米波段的 IOTA（岛屿活动）常见于 SSB $14.260\,\mathrm{MHz}$ 、CW $14.040\,\mathrm{MHz}$** 。按竞赛惯例，IOTA 竞赛须遵守所在分区的 **IARU 波段规划** ——其中 **80 米的 $3560$ ~ $3600\,\mathrm{kHz}$ 通常不用于 IOTA 竞赛** 。 **$3560$ ~ $3600\,\mathrm{kHz}$ 则是以 SSB 方式参加业余无线电竞赛可以选用的频段** （80 米 SSB 竞赛段），而 $7040$ ~ $7060\,\mathrm{kHz}$ 、 $14060$ ~ $14125\,\mathrm{kHz}$ 、 $14300$ ~ $14350\,\mathrm{kHz}$ 均不可选用。就传播规律而言， **10 米波段的 DX 通信最佳时段是白天** （主要依靠日间 F2 层反射）。
 
 奖状（awards）体系鼓励爱好者追求通联的广度： **WAS（通联全美 50 州）** 要求提交各州卡片，因此非美国呼号（如加拿大 VA 前缀的 VA3EJ）不能用作证明，而 AC6HY、N8DX、KC1XX 等美国呼号可以； **5BWAZ（五波段 WAZ）** 至少需提交 198 个分区的卡片（CQ 分区共 200，通常减去 2 个极稀有分区）； **卫星和 6 米 WAZ、160 米 WAZ** 则至少需提交 25 个区的卡片。对我国爱好者而言，最稀有、最不易通联的电台例子是 **KP5A** （德塞切奥岛，KP5 前缀），相对可及的还有 VK0HR（赫德岛，VK0 前缀）、AH0K（马里亚纳群岛，AH0 前缀）、ZS1EZ（南非，ZS 前缀）等。此外， **WAPC（Worked All Provinces of China，通联中国之省）** 是由我国木兰围场 DX 俱乐部设立、以通联中国各省（直辖市、自治区、特别行政区）为目标的奖状/竞赛活动，性质与通联全美的 WAS 类似。
 
@@ -33,21 +33,21 @@ description: 讲解 DX（远程）通信技巧、竞赛（Contest）规则与记
 > \theta=\operatorname{atan2}\big(\sin\Delta\lambda\cos\varphi_2,\ \cos\varphi_1\sin\varphi_2-\sin\varphi_1\cos\varphi_2\cos\Delta\lambda\big)
 > $$
 >
-> 其中 $\theta$ 是从正北顺时针计的方位角，$\operatorname{atan2}$ 的结果落在 $-180\degree\sim180\degree$ ，负值时加 $360\degree$ 转正。手算 $\operatorname{atan2}(y,x)$ 时先查 $\sin$、$\cos$ 算出 $y$、$x$，再取 $r=\arctan\left|\dfrac{y}{x}\right|$，按 $x$、$y$ 符号定象限：$x>0$ 取 $\pm r$、$x<0$ 取 $180^\circ\mp r$、$x=0$ 取 $\pm90^\circ$ 。
+> 其中 $\theta$ 是从正北顺时针计的方位角，$\operatorname{atan2}$ 的结果落在 $\left(-180\degree,180\degree\right]$ ，负值时加 $360\degree$ 转正。手算 $\operatorname{atan2}(y,x)$ 时先查 $\sin$ 、 $\cos$ 算出 $y$ 、 $x$，再取 $r=\arctan\left|\dfrac{y}{x}\right|$ ，按 $x$ 、 $y$ 符号定象限： $x>0$ 取 $\pm r$ 、 $x<0$ 取 $180^\circ\mp r$ 、 $x=0$ 取 $\pm90^\circ$ 。
 >
-> 以北京（ $39.9\degree\mathrm{N},\ 116.4\degree\mathrm{E}$ ）到东欧（ $50\degree\mathrm{N},\ 25\degree\mathrm{E}$ ）为例，$\Delta\lambda=25-116.4=-91.4^\circ$：
-> $y=\sin(-91.4^\circ)\cos50^\circ=-\sin91.4^\circ\cos50^\circ=-\cos1.4^\circ\cos50^\circ=-0.9997\times0.6428=-0.6426$；
-> $x=\cos39.9^\circ\sin50^\circ-\sin39.9^\circ\cos50^\circ\cos(-91.4^\circ)=0.7672\times0.7660-0.6414\times0.6428\times(-\sin1.4^\circ)=0.5877+0.0101=0.5978$；
-> $r=\arctan\dfrac{0.6426}{0.5978}=\arctan1.075=47.1^\circ$，因 $x>0,\ y<0$ 取 $\theta=-47.1^\circ$，加 $360^\circ$ 得北京→欧洲 $312.9^\circ$ ，西北偏北，印证上文"约 300°"。
-> 反向（欧洲→北京）$\Delta\lambda=116.4-25=91.4^\circ$：$y=\sin91.4^\circ\cos39.9^\circ=\cos1.4^\circ\cos39.9^\circ=0.9997\times0.7672=0.7670$；$x=\cos50^\circ\sin39.9^\circ-\sin50^\circ\cos39.9^\circ\cos91.4^\circ=0.6428\times0.6414-0.7660\times0.7672\times(-\sin1.4^\circ)=0.4123+0.0143=0.4266$；$r=\arctan\dfrac{0.7670}{0.4266}=\arctan1.798=60.9^\circ$，因 $x>0,\ y>0$ 取 $\theta=60.9^\circ$ ，东北偏北，印证上文"约 60°"。
+> 以北京（ $39.9\degree\mathrm{N},\ 116.4\degree\mathrm{E}$ ）到东欧（ $50\degree\mathrm{N},\ 25\degree\mathrm{E}$ ）为例，$\Delta\lambda=25-116.4=-91.4^\circ$ ：
+> $y=\sin(-91.4^\circ)\cos50^\circ=-\sin91.4^\circ\cos50^\circ=-\cos1.4^\circ\cos50^\circ=-0.9997\times0.6428=-0.6426$ ；
+> $x=\cos39.9^\circ\sin50^\circ-\sin39.9^\circ\cos50^\circ\cos(-91.4^\circ)=0.7672\times0.7660-0.6414\times0.6428\times(-\sin1.4^\circ)=0.5877+0.0101=0.5978$ ；
+> $r=\arctan\dfrac{0.6426}{0.5978}=\arctan1.075=47.1^\circ$ ，因 $x>0,\ y<0$ 取 $\theta=-47.1^\circ$ ，加 $360^\circ$ 得北京→欧洲 $312.9^\circ$ ，西北偏北，印证上文"约 300°"。
+> 反向（欧洲→北京） $\Delta\lambda=116.4-25=91.4^\circ$ ： $y=\sin91.4^\circ\cos39.9^\circ=\cos1.4^\circ\cos39.9^\circ=0.9997\times0.7672=0.7670$ ； $x=\cos50^\circ\sin39.9^\circ-\sin50^\circ\cos39.9^\circ\cos91.4^\circ=0.6428\times0.6414-0.7660\times0.7672\times(-\sin1.4^\circ)=0.4123+0.0143=0.4266$ ； $r=\arctan\dfrac{0.7670}{0.4266}=\arctan1.798=60.9^\circ$ ，因 $x>0,\ y>0$ 取 $\theta=60.9^\circ$ ，东北偏北，印证上文"约 60°"。
 
 天线的 **走向（轴向）** 与辐射方向的关系取决于天线形式。 **水平极化的半波长偶极天线** 在轴线方向辐射最弱（存在零点），在垂直于轴线的两侧（"侧射"方向）辐射最强。因此要把主瓣对准某一方位，应让偶极子轴线 **垂直于** 该方位。北京到纽约的最短路径从北京出发大致朝向北（经北极地区），所以联络纽约的偶极天线应取 **东西走向** ——其侧射方向正好指向北，即大圆航向所在。
 
-> 北京（ $39.9\degree\mathrm{N},\ 116.4\degree\mathrm{E}$ ）到纽约（ $40.7\degree\mathrm{N},\ 74\degree\mathrm{W}$ ），$\Delta\lambda=-74-116.4=-190.4^\circ$，由诱导公式 $\sin(-190.4^\circ)=\sin10.4^\circ$、$\cos(-190.4^\circ)=-\cos10.4^\circ$：
-> $y=\sin(-190.4^\circ)\cos40.7^\circ=0.1805\times0.7581=0.1368$；
-> $x=\cos39.9^\circ\sin40.7^\circ-\sin39.9^\circ\cos40.7^\circ\cos(-190.4^\circ)=0.7672\times0.6521-0.6414\times0.7581\times(-0.9836)=0.5003+0.4783=0.9786$；
-> $r=\arctan\dfrac{0.1368}{0.9786}=\arctan0.1398\approx\arctan0.140=8.0^\circ$，因 $x>0,\ y>0$ 取 $\theta=8.0^\circ\approx8^\circ$ ——几乎正北、经北极地区（这正是"最短路径过北极"的由来）。
-> 半波偶极天线在包含振子的平面内方向图呈"8"字形：**垂直于振子轴线** 的两侧（侧射方向）辐射最强，**振子轴线两端** 是零点。因此要把主瓣对准方位角 $\theta$ ，振子轴线应取 $\theta\pm90\degree$ 。对北京→纽约 $\theta\approx8\degree$ ，轴线取 $8\degree+90\degree=98\degree$ 或 $8\degree-90\degree=-82\degree$（即 $278\degree$ ），两个解都对应 **大致东西走向**——侧射方向恰好朝北，指向大圆航向。
+> 北京（ $39.9\degree\mathrm{N},\ 116.4\degree\mathrm{E}$ ）到纽约（ $40.7\degree\mathrm{N},\ 74\degree\mathrm{W}$ ）， $\Delta\lambda=-74-116.4=-190.4^\circ$ ，由诱导公式 $\sin(-190.4^\circ)=\sin10.4^\circ$ 、 $\cos(-190.4^\circ)=-\cos10.4^\circ$ ：
+> $y=\sin(-190.4^\circ)\cos40.7^\circ=0.1805\times0.7581=0.1368$ ；
+> $x=\cos39.9^\circ\sin40.7^\circ-\sin39.9^\circ\cos40.7^\circ\cos(-190.4^\circ)=0.7672\times0.6521-0.6414\times0.7581\times(-0.9836)=0.5003+0.4783=0.9786$ ；
+> $r=\arctan\dfrac{0.1368}{0.9786}=\arctan0.1398\approx\arctan0.140=8.0^\circ$ ，因 $x>0,\ y>0$ 取 $\theta=8.0^\circ\approx8^\circ$ ——几乎正北、经北极地区（这正是"最短路径过北极"的由来）。
+> 半波偶极天线在包含振子的平面内方向图呈"8"字形：**垂直于振子轴线** 的两侧（侧射方向）辐射最强，**振子轴线两端** 是零点。因此要把主瓣对准方位角 $\theta$ ，振子轴线应取 $\theta\pm90\degree$ 。对北京→纽约 $\theta\approx8\degree$ ，轴线取 $8\degree+90\degree=98\degree$ 或 $8\degree-90\degree=-82\degree$ （即 $278\degree$  ），两个解都对应 **大致东西走向**——侧射方向恰好朝北，指向大圆航向。
 
 ## 竞赛操作与信号交换
 

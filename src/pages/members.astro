@@ -9,6 +9,13 @@ import {
 
 const fieldValue = (m: Record<string, string | undefined>, key: string): string =>
 	(m[key] ?? '').toString().trim();
+
+// README 承诺「链接字段自动生成外链」：已写完整 http(s):// 或 // 时原样使用；
+// 只填域名（省略协议）时自动补 https://，避免被浏览器当成站内相对路径。
+const externalHref = (value: string): string => {
+	const v = value.trim();
+	return /^(https?:)?\/\//i.test(v) ? v : `https://${v.replace(/^\/+/, '')}`;
+};
 ---
 
 <StarlightPage
@@ -69,7 +76,7 @@ const fieldValue = (m: Record<string, string | undefined>, key: string): string 
 															<dt>{f.label}</dt>
 															<dd>
 																{f.type === 'link' ? (
-																	<a href={f.value} target="_blank" rel="noopener noreferrer">
+																	<a href={externalHref(f.value)} target="_blank" rel="noopener noreferrer">
 																		{f.value}
 																	</a>
 																) : f.type === 'mail' ? (

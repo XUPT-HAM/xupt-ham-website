@@ -9,18 +9,19 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 下列站点为西邮五九电波社的合作伙伴，点击卡片即可跳转。
 
-## 校内
+## 业无相关
+
+<CardGrid>
+	<LinkCard title="HAM Wiki（国内访问较慢）" description="致力于成为一个持续更新的面向业余无线电入门级爱好者的知识型网站" href="https://hamwiki.vercel.app/" />
+	<LinkCard title="CHDARC 长安大学业余无线电协会" description="以电波连接世界，以热爱探索无限。无论你是资深火腿，还是零基础小白，这里都有一份属于你的频率。 " href="https://www.chuarc.cn/" />
+</CardGrid>
+
+## 其他
 
 <CardGrid>
 	<LinkCard title="CO导航" description="西邮导航" href="https://cooo.site/" />
 	<LinkCard title="智邮普创工作室" description="服务数字校园，探索安全边界" href="http://zypc.xupt.edu.cn/" />
 	<LinkCard title="西邮 Wiki" description="西安邮电大学非官方校园生活指南" href="https://wiki.cooo.site/" />
-</CardGrid>
-
-## 校外
-
-<CardGrid>
-	<LinkCard title="HAM Wiki（国内访问较慢）" description="致力于成为一个持续更新的面向业余无线电入门级爱好者的知识型网站" href="https://hamwiki.vercel.app/" />
 </CardGrid>
 
 </StarlightPage>

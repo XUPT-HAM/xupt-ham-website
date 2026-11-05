@@ -10,6 +10,8 @@ const links = [
 	{ href: `${base}/about/`, label: t('nav.about') },
 	{ href: `${base}/activities/`, label: t('nav.activities') },
 	{ href: `${base}/history/`, label: t('nav.history') },
+	// 社员风采目前只有中文页面（/members/），英文版暂统一指向该地址，避免 404
+	{ href: '/members/', label: t('nav.members') },
 	{ href: `${base}/links/`, label: t('nav.links') },
 	{ href: `${base}/contact/`, label: t('nav.contact') },
 	{ href: `${base}/downloads/`, label: t('nav.download') },

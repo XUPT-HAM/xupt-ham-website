@@ -95,6 +95,10 @@ export const memberSections: MemberSection[] = [
 				callSign: 'BI9COB',
 				nickname: 'Monoceros406',
 				avatar: '/members/Monoceros406.jpg',
+				college: '网络空间安全学院、密码学院',
+				qrz: 'https://www.qrz.com/db/BI9COB',
+				blog: 'https://monoceros406.github.io/',
+				qq: '1295625063'
 			},
 			{
 				nickname: 'LHM',
@@ -138,6 +142,10 @@ export const memberSections: MemberSection[] = [
 				callSign: 'BI9COB',
 				nickname: 'Monoceros406',
 				avatar: '/members/Monoceros406.jpg',
+				college: '网络空间安全学院、密码学院',
+				qrz: 'https://www.qrz.com/db/BI9COB',
+				blog: 'https://monoceros406.github.io/',
+				qq: '1295625063'
 			},
 		],
 	},
