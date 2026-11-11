@@ -52,7 +52,7 @@ export const downloadSections: DownloadSection[] = [
 			{
 				name: '设台申请表',
 				description: '设台申请表',
-				href: 'https://raw.githubusercontent.com/XUPT-HAM/download-files/refs/heads/main/%E7%94%B5%E5%8F%B0%E7%94%B3%E8%AF%B7%E8%A1%A8%E4%B8%8E%E8%B7%A8%E7%9C%81%E7%94%B3%E8%AF%B7%E4%B9%A6.7z',
+				href: 'https://raw.githubusercontent.com/XUPT-HAM/download-files/refs/heads/main/%E8%AE%BE%E5%8F%B0%E7%94%B3%E8%AF%B7%E8%A1%A8.7z',
 			},
 		],
 	},
@@ -67,7 +67,7 @@ export const downloadSections: DownloadSection[] = [
 			{
 				name: '西安邮电学院校史',
 				description: '西安邮电学院校史',
-				href: 'https://raw.githubusercontent.com/XUPT-HAM/download-files/refs/heads/main/%E8%A5%BF%E5%AE%89%E9%82%AE%E7%94%B5%E5%AD%A6%E9%99%A2%E6%A0%A1%E5%8F%B2.pdf',
+				href: 'https://raw.githubusercontent.com/XUPT-HAM/download-files/refs/heads/main/%E8%A5%BF%E5%AE%89%E9%82%AE%E7%94%B5%E5%AD%A6%E9%99%A2%E6%A0%A1%E5%8F%B2.7z',
 			},
 		],
 	},
