@@ -133,7 +133,8 @@ export default defineConfig({
 								{ label: 'GP 天线', collapsed: true, items: [{ autogenerate: { directory: 'technical/05-antenna/02-gp' } }] },
 								{ label: '八木天线', collapsed: true, items: [{ autogenerate: { directory: 'technical/05-antenna/03-yagi' } }] },
 								{ label: '螺旋天线', collapsed: true, items: [{ autogenerate: { directory: 'technical/05-antenna/04-helical' } }] },
-							],
+								{ label: '常见射频接口', link: '/technical/05-antenna/05-rf-connectors/' },
+								],
 						},
 						{
 							label: '无线电测向',
